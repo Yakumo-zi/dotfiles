@@ -94,6 +94,9 @@ return {
       }
       -- Lua
       require("plugins.lsp.lua").setup(lspconfig,lsp);
+      require("plugins.lsp.rust").rust_setup(lspconfig, lsp);
+      require("plugins.lsp.rust").rust_tool_setup();
+      require("plugins.lsp.c_cpp").setup(lspconfig, lsp);
     end,
   },
 }
