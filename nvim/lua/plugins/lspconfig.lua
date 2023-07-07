@@ -1,5 +1,8 @@
 return {
   {
+    'simrat39/rust-tools.nvim'
+  },
+  {
     "neovim/nvim-lspconfig",
     dependencies = {
       "williamboman/mason.nvim",
@@ -37,7 +40,7 @@ return {
 
       -- Diagnostic config
       local config = {
-        virtual_text = false,
+        virtual_text = true,
         signs = {
           active = signs,
         },
@@ -53,8 +56,8 @@ return {
           prefix = "",
         },
       }
-      vim.diagnostic.config(config)
 
+      vim.diagnostic.config(config)
       -- This function gets run when an LSP connects to a particular buffer.
       local on_attach = function(client, bufnr)
         local lsp_map = require("helpers.keys").lsp_map
@@ -84,28 +87,13 @@ return {
       -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
+      local lsp=require("lspconfig")
+      local lspconfig={
+        on_attach=on_attach,
+        capabilities=capabilities
+      }
       -- Lua
-      require("lspconfig")["lua_ls"].setup({
-        on_attach = on_attach,
-        capabilities = capabilities,
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = "Replace",
-            },
-            diagnostics = {
-              globals = { "vim" },
-            },
-            workspace = {
-              library = {
-                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                [vim.fn.stdpath("config") .. "/lua"] = true,
-              },
-            },
-          },
-        },
-      })
+      require("plugins.lsp.lua").setup(lspconfig,lsp);
     end,
   },
 }
