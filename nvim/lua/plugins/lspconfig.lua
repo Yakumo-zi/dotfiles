@@ -1,6 +1,6 @@
 return {
   {
-    'simrat39/rust-tools.nvim'
+    "simrat39/rust-tools.nvim",
   },
   {
     "neovim/nvim-lspconfig",
@@ -62,16 +62,16 @@ return {
       local on_attach = function(client, bufnr)
         local lsp_map = require("helpers.keys").lsp_map
 
-        lsp_map("<leader>lr", vim.lsp.buf.rename, bufnr, "Rename symbol")
-        lsp_map("<leader>la", vim.lsp.buf.code_action, bufnr, "Code action")
-        lsp_map("<leader>ld", vim.lsp.buf.type_definition, bufnr, "Type definition")
-        lsp_map("<leader>ls", require("telescope.builtin").lsp_document_symbols, bufnr, "Document symbols")
+        -- lsp_map("<leader>lr", vim.lsp.buf.rename, bufnr, "Rename symbol")
+        -- lsp_map("<leader>la", vim.lsp.buf.code_action, bufnr, "Code action")
+        -- lsp_map("<leader>ld", vim.lsp.buf.type_definition, bufnr, "Type definition")
+        -- lsp_map("<leader>ls", require("telescope.builtin").lsp_document_symbols, bufnr, "Document symbols")
 
-        lsp_map("gd", vim.lsp.buf.definition, bufnr, "Goto Definition")
-        lsp_map("gr", require("telescope.builtin").lsp_references, bufnr, "Goto References")
-        lsp_map("gI", vim.lsp.buf.implementation, bufnr, "Goto Implementation")
-        lsp_map("K", vim.lsp.buf.hover, bufnr, "Hover Documentation")
-        lsp_map("gD", vim.lsp.buf.declaration, bufnr, "Goto Declaration")
+        -- lsp_map("gd", vim.lsp.buf.definition, bufnr, "Goto Definition")
+        -- lsp_map("gr", require("telescope.builtin").lsp_references, bufnr, "Goto References")
+        -- lsp_map("gI", vim.lsp.buf.implementation, bufnr, "Goto Implementation")
+        -- lsp_map("K", vim.lsp.buf.hover, bufnr, "Hover Documentation")
+        -- lsp_map("gD", vim.lsp.buf.declaration, bufnr, "Goto Declaration")
 
         -- Create a command `:Format` local to the LSP buffer
         vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
@@ -87,16 +87,16 @@ return {
       -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-      local lsp=require("lspconfig")
-      local lspconfig={
-        on_attach=on_attach,
-        capabilities=capabilities
+      local lsp = require("lspconfig")
+      local lspconfig = {
+        on_attach = on_attach,
+        capabilities = capabilities,
       }
       -- Lua
-      require("plugins.lsp.lua").setup(lspconfig,lsp);
-      require("plugins.lsp.rust").rust_setup(lspconfig, lsp);
-      require("plugins.lsp.rust").rust_tool_setup();
-      require("plugins.lsp.c_cpp").setup(lspconfig, lsp);
+      require("plugins.lsp.lua").setup(lspconfig, lsp)
+      require("plugins.lsp.rust").rust_setup(lspconfig, lsp)
+      require("plugins.lsp.rust").rust_tool_setup()
+      require("plugins.lsp.c_cpp").setup(lspconfig, lsp)
     end,
   },
 }
