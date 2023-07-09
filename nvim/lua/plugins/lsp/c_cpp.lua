@@ -1,12 +1,16 @@
 return {
-	setup = function(lspconfig, lsp)
-		lsp.clangd.setup({
-			on_attach = lspconfig.on_attach,
-			capabilities = lspconfig.capabilities,
-			cmd = {
-				"clangd",
-				"--offset-encoding=utf-16",
-			},
-		})
-	end,
+  setup = function(lspconfig, lsp)
+    lsp.clangd.setup({
+      on_attach = lspconfig.on_attach,
+      capabilities = lspconfig.capabilities,
+      cmd = {
+        "clangd",
+        "--offset-encoding=utf-16",
+        "--background-index",
+        "--clang-tidy",
+        "--fallback-style=LLVM",
+        "--header-insertion=iwyu",
+      },
+    })
+  end,
 }

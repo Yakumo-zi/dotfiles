@@ -16,6 +16,11 @@ return {
           vim.keymap.set("n", "<leader>la", rt.code_action_group.code_action_group, { buffer = bufnr })
         end,
       },
+      tools = {
+        inlay_hints = {
+          auto = false,
+        },
+      },
     })
   end,
 }

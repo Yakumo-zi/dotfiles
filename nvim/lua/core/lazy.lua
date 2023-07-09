@@ -24,3 +24,4 @@ require("helpers.keys").map("n","<leader>L",lazy.show,"Show Lazy")
 
 local colorscheme=require("helpers.colorscheme")
 vim.cmd.colorscheme(colorscheme)
+
