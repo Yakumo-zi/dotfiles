@@ -89,6 +89,7 @@ return {
       require("plugins.lsp.rust").rust_tool_setup()
       require("plugins.lsp.c_cpp").setup(lspconfig, lsp)
       require("plugins.lsp.front_end").setup(lspconfig, lsp)
+      require("plugins.lsp.python").setup(lspconfig, lsp)
     end,
   },
 }

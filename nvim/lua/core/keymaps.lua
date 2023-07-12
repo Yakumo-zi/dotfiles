@@ -15,10 +15,10 @@ map("n", "<leader>dc", buffers.delete_this, "Current buffer")
 map("n", "<leader>do", buffers.delete_others, "Other buffers")
 map("n", "<leader>da", buffers.delete_all, "All buffers")
 
-map("n", "<leader>e", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", "Open Telescope File Browser")
 
 map("n", "<leader>ds", "<cmd>Lspsaga show_buf_diagnostics<CR>", "Open diagnostic")
 map("n", "<leader>so", "<cmd>SymbolsOutline<CR>", "Open SymbosOutline")
+map("n","<leader>e","<cmd>NeoTreeFloatToggle<CR>","Open Neotree")
 
 map({"n","t"}, "<C-t>", "<cmd>ToggleTerm<cr>", "ToggleTerm")
 
