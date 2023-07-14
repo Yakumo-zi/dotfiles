@@ -8,11 +8,14 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "j-hui/fidget.nvim",
       "folke/neodev.nvim",
       "RRethy/vim-illuminate",
       "hrsh7th/cmp-nvim-lsp",
       "lvimuser/lsp-inlayhints.nvim",
+      {
+      "j-hui/fidget.nvim",
+        branch="legacy"
+      }
     },
     config = function()
       -- Set up Mason before anything else
@@ -90,6 +93,7 @@ return {
       require("plugins.lsp.c_cpp").setup(lspconfig, lsp)
       require("plugins.lsp.front_end").setup(lspconfig, lsp)
       require("plugins.lsp.python").setup(lspconfig, lsp)
+      require("plugins.lsp.default_lsp").setup(lspconfig, lsp)
     end,
   },
 }
