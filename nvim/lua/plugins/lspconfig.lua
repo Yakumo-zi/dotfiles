@@ -27,6 +27,7 @@ return {
         automatic_installation = true,
       })
 
+
       -- Quick access via keymap
       require("helpers.keys").map("n", "<leader>M", "<cmd>Mason<cr>", "Show Mason")
 

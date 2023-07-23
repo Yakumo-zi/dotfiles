@@ -36,5 +36,6 @@ return {
 		-- map({ "n", "t" }, "<C-t>", "<cmd>Lspsaga term_toggle<CR>", "Float Terminal Toggle")
 		map("n", "gt", "<cmd>Lspsaga peek_type_definition<CR>", "Peek Type Definition")
 		map("n", "gp", "<cmd>Lspsaga peek_definition<CR>", "Peek Definition")
+		map("n", "lr", "<cmd>Lspsaga rename<CR>", "Peek Definition")
 	end,
 }

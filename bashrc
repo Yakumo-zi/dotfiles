@@ -11,11 +11,12 @@ alias vi='nvim'
 alias ps='procs'
 alias cat='bat'
 alias ls='exa'
+alias ll="ls -l --tree -h"
 alias cd='z'
-alias hx='helix'
 
 PS1='[\u@\h \W]\$ '
 
+# export env
 export https_proxy=http://127.0.0.1:7890
 export http_proxy=http://127.0.0.1:7890
 export all_proxy=socks5://127.0.0.1:7890
@@ -32,6 +33,7 @@ VISUAL='nvim'
 
 source /home/devil/.config/broot/launcher/bash/br
 source /usr/share/nvm/init-nvm.sh
+source ~/code/python/venv/bin/activate
 
 export LIBVA_DRIVER_NAME=nvidia
 export XDG_SESSION_TYPE=wayland
