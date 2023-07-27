@@ -10,6 +10,9 @@ return {
         "--clang-tidy",
         "--fallback-style=LLVM",
         "--header-insertion=iwyu",
+        "--enable-config",
+        "--completion-parse=auto",
+        "--all-scopes-completion",
       },
     })
   end,

@@ -13,9 +13,9 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "lvimuser/lsp-inlayhints.nvim",
       {
-      "j-hui/fidget.nvim",
-        branch="legacy"
-      }
+        "j-hui/fidget.nvim",
+        branch = "legacy",
+      },
     },
     config = function()
       -- Set up Mason before anything else
@@ -26,7 +26,6 @@ return {
         },
         automatic_installation = true,
       })
-
 
       -- Quick access via keymap
       require("helpers.keys").map("n", "<leader>M", "<cmd>Mason<cr>", "Show Mason")
@@ -46,11 +45,11 @@ return {
 
       -- Diagnostic config
       local config = {
-        virtual_text = true,
+        virtual_text = false,
         signs = {
           active = signs,
         },
-        update_in_insert = true,
+        update_in_insert = false,
         underline = true,
         severity_sort = true,
         float = {
@@ -63,6 +62,13 @@ return {
         },
       }
       vim.diagnostic.config(config)
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+        border = "rounded",
+      })
+
+      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+        border = "rounded",
+      })
       -- This function gets run when an LSP connects to a particular buffer.
       local on_attach = function(client, bufnr)
         local lsp_map = require("helpers.keys").lsp_map
@@ -72,8 +78,9 @@ return {
         end, { desc = "Format current buffer with LSP" })
 
         lsp_map("<leader>ff", "<cmd>Format<cr>", bufnr, "Format")
-
+        lsp_map("<leader>df", vim.diagnostic.open_float, bufnr, "Open Float Diagnostics")
         -- Attach and configure vim-illuminate
+        vim.lsp.inlay_hint(bufnr, true)
         require("lsp-inlayhints").on_attach(client, bufnr)
         require("illuminate").on_attach(client)
       end

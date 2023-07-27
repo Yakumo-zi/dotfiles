@@ -8,6 +8,8 @@ return {
     commit = "2957f74",
     config = function()
       require("git-conflict").setup({
+        disable_diagnostics = false,
+        debug = false,
         default_mappings = {
           ours = "co",
           theirs = "ct",
@@ -21,10 +23,10 @@ return {
   },
   {
     "tpope/vim-fugitive",
-    config = function ()
+    config = function()
       local map = require("helpers.keys").map
       map("n", "<leader>ga", "<cmd>Git add %<cr>", "Stage the current file")
       map("n", "<leader>gb", "<cmd>Git blame<cr>", "Show the blame")
-    end
-  }
+    end,
+  },
 }
