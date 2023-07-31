@@ -5,6 +5,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+ulimit -n 10240
+
 alias grep='rg'
 alias vim='nvim'
 alias vi='nvim'

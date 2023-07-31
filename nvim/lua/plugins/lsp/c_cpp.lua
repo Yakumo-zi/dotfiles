@@ -1,7 +1,12 @@
 return {
   setup = function(lspconfig, lsp)
+    local on_attach = function(client, bufnr) 
+        vim.lsp.inlay_hint(bufnr, true)
+        require("lsp-inlayhints").on_attach(client, bufnr)
+        lspconfig.on_attach(client,bufnr);
+    end
     lsp.clangd.setup({
-      on_attach = lspconfig.on_attach,
+      on_attach = on_attach,
       capabilities = lspconfig.capabilities,
       cmd = {
         "clangd",

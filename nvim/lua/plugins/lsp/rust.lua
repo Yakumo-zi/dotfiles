@@ -1,7 +1,12 @@
 return {
   rust_setup = function(lspconfig, lsp)
+    local on_attach = function(client, bufnr)
+      vim.lsp.inlay_hint(bufnr, true)
+      require("lsp-inlayhints").on_attach(client, bufnr)
+      lspconfig.on_attach(client, bufnr)
+    end
     lsp.rust_analyzer.setup({
-      on_attach = lspconfig.on_attach,
+      on_attach = on_attach,
       capabilities = lspconfig.capabilities,
     })
   end,
@@ -10,7 +15,7 @@ return {
     rt.setup({
       server = {
         on_attach = function(_, bufnr)
-          local lsp_map=require("helpers.keys").lsp_map
+          local lsp_map = require("helpers.keys").lsp_map
           -- Hover actions
           lsp_map("K", rt.hover_actions.hover_actions, { buffer = bufnr })
           -- Code action groups

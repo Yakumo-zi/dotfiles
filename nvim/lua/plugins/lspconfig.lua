@@ -80,8 +80,6 @@ return {
         lsp_map("<leader>ff", "<cmd>Format<cr>", bufnr, "Format")
         lsp_map("<leader>df", vim.diagnostic.open_float, bufnr, "Open Float Diagnostics")
         -- Attach and configure vim-illuminate
-        vim.lsp.inlay_hint(bufnr, true)
-        require("lsp-inlayhints").on_attach(client, bufnr)
         require("illuminate").on_attach(client)
       end
 
@@ -100,7 +98,6 @@ return {
       require("plugins.lsp.rust").rust_tool_setup()
       require("plugins.lsp.c_cpp").setup(lspconfig, lsp)
       require("plugins.lsp.front_end").setup(lspconfig, lsp)
-      require("plugins.lsp.python").setup(lspconfig, lsp)
       require("plugins.lsp.default_lsp").setup(lspconfig, lsp)
     end,
   },
