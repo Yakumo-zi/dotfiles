@@ -13,5 +13,11 @@ local function get_if_available(name, opts)
   return "default"
 end
 
-local colorscheme = get_if_available("onedark")
+local colorscheme = get_if_available("catppuccin")
+
+-- colorscheme config
+require("catppuccin").setup({
+  flavour = "frappe",
+})
+
 return colorscheme

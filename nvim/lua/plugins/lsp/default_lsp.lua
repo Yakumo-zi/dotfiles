@@ -10,6 +10,8 @@ return {
       "docker_compose_language_service",
       "taplo",
       "yamlls",
+      "gopls",
+      "bufls"
     }
     for _, server in pairs(default_lsps) do
       lsp[server].setup({
