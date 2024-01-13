@@ -64,7 +64,7 @@ return {
     )
     vim.api.nvim_set_keymap(
       "c",
-      "<up>",
+      "<S-Tab>",
       [[wilder#in_context() ? wilder#previous() : '<up>']],
       { noremap = true, expr = true }
     )
