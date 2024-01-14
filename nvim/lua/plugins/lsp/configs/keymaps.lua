@@ -1,15 +1,19 @@
 local M = {}
 M.on_attach = function(client, bufnr)
   local buf_set_keymap = vim.api.nvim_buf_set_keymap
-  buf_set_keymap(bufnr, "n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", {})
-  buf_set_keymap(bufnr, "n", "gd", ":lua vim.lsp.buf.definition()<CR>", {})
-  buf_set_keymap(bufnr, "n", "K", ":lua vim.lsp.buf.hover()<CR>", {})
+  buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", {})
+  buf_set_keymap(bufnr, "n", "gd", "<cmd>Lspsaga peek_definition<cr>", {})
+  buf_set_keymap(bufnr, "n", "gp", "<cmd>Lspsaga peek_type_definition<cr>", {})
+  buf_set_keymap(bufnr, "n", "K", "<cmd>Lspsaga hover_doc<cr>", {})
   buf_set_keymap(bufnr, "n", "<leader>fm", ":lua vim.lsp.buf.format { async = true }<CR>", {})
+  buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>Lspsaga rename ++project<cr>", {})
+  buf_set_keymap(bufnr, "n", "<leader>fr", "<cmd>Lspsaga finder<cr>", {})
+  buf_set_keymap(bufnr, "n", "<leader>so", "<cmd>Lspsaga outline<cr>", {})
 end
 M.auto_cmp = function(cmp, luasnip)
   return cmp.mapping.preset.insert({
-    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-    ["<C-u>"] = cmp.mapping.scroll_docs(4),
+    ["<C-d>"] = cmp.mapping.scroll_docs(4),
+    ["<C-u>"] = cmp.mapping.scroll_docs(-4),
     ["<CR>"] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,

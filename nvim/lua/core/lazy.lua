@@ -16,9 +16,9 @@ if not ok then
   return
 end
 
-require("helpers.keys").set_leader(" ")
-
-lazy.setup("plugins")
-
-require("helpers.keys").map("n", "<leader>L", lazy.show, "Show Lazy")
-
+lazy.setup({
+  { import = "plugins" },
+  { import = "plugins.utils" },
+  { import = "plugins.lsp" },
+  { import = "plugins.ui" },
+})

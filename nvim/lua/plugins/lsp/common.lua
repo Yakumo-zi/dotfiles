@@ -26,19 +26,16 @@ return {
       automatic_installation = true,
     },
     config = function()
-      require("mason").setup()
-      require("mason-lspconfig").setup()
-
       -- Neodev setup before LSP config
       require("neodev").setup()
-
+      require("mason").setup()
+      require("mason-lspconfig").setup()
       -- Turn on LSP status information
       require("fidget").setup()
-
       -- LSP config
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
-      local server_configs = require("plugins.lsp_config.server_configs")
-      local keymaps = require("plugins.lsp_config.keymaps")
+      local server_configs = require("plugins.lsp.configs.server_configs")
+      local keymaps = require("plugins.lsp.configs.keymaps")
 
       local lsp_autoconfig = {
         function(server_name)
