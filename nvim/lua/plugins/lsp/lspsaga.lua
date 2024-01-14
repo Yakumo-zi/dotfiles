@@ -11,7 +11,7 @@ return {
         layout = 'float'
       },
       diagnostic = {
-        diagnostic_only_current = false
+        diagnostic_only_current = true
       }
     })
   end,

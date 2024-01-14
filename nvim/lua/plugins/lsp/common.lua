@@ -9,6 +9,9 @@ return {
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
+    init = function()
+
+    end,
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
     },
@@ -30,8 +33,13 @@ return {
       require("neodev").setup()
       require("mason").setup()
       require("mason-lspconfig").setup()
+
+
       -- Turn on LSP status information
       require("fidget").setup()
+      -- LSP appearance config
+      vim.diagnostic.config({ virtual_text = false }, nil)
+
       -- LSP config
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
       local server_configs = require("plugins.lsp.configs.server_configs")
@@ -41,7 +49,7 @@ return {
         function(server_name)
           require("lspconfig")[server_name].setup({
             on_attach = keymaps.on_attach,
-            capabilities = capabilities
+            capabilities = capabilities,
 
           })
         end,

@@ -38,6 +38,10 @@ return {
       )
       cmp.setup({
         enabled = true,
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body) -- For `luasnip` users.
@@ -50,6 +54,7 @@ return {
           { name = "buffer" },
           { name = "luasnip" },
         }),
+
         mapping = require("plugins.lsp.configs.keymaps").auto_cmp(cmp, luasnip),
         formatting = {
           expandable_indicator = true,
