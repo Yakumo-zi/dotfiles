@@ -86,8 +86,8 @@ local buttons = {
   val = {
     button("e", "  New file", "<cmd>ene <CR>"),
     button("SPC f f", "󰈞  Find file"),
-    button("SPC f h", "󰊄  Recently opened files"),
-    button("SPC f r", "  Frecency/MRU"),
+    button("SPC f h", "󰊄  Find help tags"),
+    button("SPC f o", "  Recently opened files"),
     button("SPC f g", "󰈬  Find word"),
     button("SPC f m", "  Open config file", "<cmd>e ~/.config/nvim/init.lua<cr>"),
   },

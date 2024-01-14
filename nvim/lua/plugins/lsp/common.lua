@@ -48,7 +48,15 @@ return {
       local lsp_autoconfig = {
         function(server_name)
           require("lspconfig")[server_name].setup({
-            on_attach = keymaps.on_attach,
+            on_attach = function(client, bufnr)
+              keymaps.on_attach(client, bufnr)
+              require("lsp_signature").on_attach({
+                bind = true,
+                handler_opts = {
+                  border = "rounded"
+                }
+              }, bufnr)
+            end,
             capabilities = capabilities,
 
           })
@@ -62,4 +70,11 @@ return {
       )
     end,
   },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    opts = {},
+    config = function(_, opts) require 'lsp_signature'.setup(opts) end
+  }
+
 }

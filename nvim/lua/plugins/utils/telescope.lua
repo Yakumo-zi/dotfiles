@@ -9,5 +9,6 @@ return {
     { "<leader>fg", "<cmd>Telescope live_grep<cr>",   "n", desc = "Telescope live grep" },
     { "<leader>fd", "<cmd>Telescope diagnostics<cr>", "n", desc = "Telescope find diagnostics" },
     { "<leader>fh", "<cmd>Telescope help_tags<cr>",   "n", desc = "Telescope help tags" },
+    { "<leader>fo", "<cmd>Telescope oldfiles<cr>",    "n", desc = "Telescope recently opened files" },
   },
 }
