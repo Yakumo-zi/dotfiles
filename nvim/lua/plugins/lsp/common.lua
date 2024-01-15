@@ -10,7 +10,14 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     init = function()
-
+      vim.diagnostic.config({
+        float = {
+          show_header = true,
+          source = 'if_many',
+          border = 'rounded',
+          focusable = false,
+        },
+      }, nil)
     end,
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
@@ -62,9 +69,11 @@ return {
           })
         end,
       }
+
       for server, setup in ipairs(server_configs) do
         lsp_autoconfig[server] = setup
       end
+
       require("mason-lspconfig").setup_handlers(
         lsp_autoconfig
       )

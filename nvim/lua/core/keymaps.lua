@@ -3,6 +3,10 @@ local utils = require("helpers.utils")
 local map = require("helpers.keys").map
 local buffers = require("helpers.buffers")
 
+
+map("n", "j", "gj")
+map("n", "k", "gk")
+
 -- nvim keys
 map("n", "<C-h>", "<C-w><C-h>", "Navigate windows to the left")
 map("n", "<C-j>", "<C-w><C-j>", "Navigate windows down")
