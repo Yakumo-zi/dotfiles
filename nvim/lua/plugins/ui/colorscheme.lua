@@ -9,6 +9,7 @@ return {
   },
   {
     "catppuccin/nvim",
+    lazy = true,
     name = "catppuccin",
     priority = 1000,
     config = function()
@@ -19,4 +20,13 @@ return {
       vim.cmd.colorscheme("catppuccin")
     end
   },
+  {
+    'sainnhe/everforest',
+    -- lazy = true,
+    priority = 1000,
+    config = function()
+      vim.g.everforest_diagnostic_line_highlight = 1
+      vim.cmd.colorscheme("everforest")
+    end
+  }
 }

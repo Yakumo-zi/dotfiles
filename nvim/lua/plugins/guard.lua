@@ -2,6 +2,7 @@
 return {
   "nvimdev/guard.nvim",
   -- Builtin configuration, optional
+  event = "LspAttach",
   dependencies = {
     "nvimdev/guard-collection",
   },

@@ -23,6 +23,7 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
     dnpendencies = {
       "neovim/nvim-lspconfig",
       "hrsh7th/cmp-nvim-lsp",
@@ -57,26 +58,19 @@ return {
           { name = "buffer" },
           { name = "luasnip" },
         }),
-
         mapping = require("plugins.lsp.configs.keymaps").auto_cmp(cmp, luasnip),
         formatting = {
           expandable_indicator = true,
-          fields = { "kind", "abbr", "menu" },
-          format = lspkind.cmp_format({
-            mode = 'symbol',          -- show only symbol annotations
-            maxwidth = 50,            -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-            ellipsis_char = '...',    -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-            show_labelDetails = true, -- show labelDetails in menu. Disabled by default
-            before = function(entry, vim_item)
-              vim_item.menu = ({
-                buffer = "[Buffer]",
-                nvim_lsp = "[LSP]",
-                luasnip = "[Snip]",
-                nvim_lua = "[Lua]",
-              })[entry.source.name]
-              return vim_item
-            end
-          })
+          fields = { "abbr", "kind", "menu" },
+          format = function(entry, vim_item)
+            lspkind.cmp_format({
+              mode = 'symbol',          -- show only symbol annotations
+              maxwidth = 50,            -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+              ellipsis_char = '...',    -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+              show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+            })(entry, vim_item)
+            return vim_item
+          end
         },
       })
     end,

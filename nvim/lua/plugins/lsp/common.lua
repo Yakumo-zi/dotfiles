@@ -1,27 +1,37 @@
 return {
-  "folke/neodev.nvim",
-  "RRethy/vim-illuminate",
-  "simrat39/rust-tools.nvim",
+  {
+    "folke/neodev.nvim",
+    lazy = true,
+  },
+  {
+
+    "RRethy/vim-illuminate",
+    event = "LspAttach",
+  },
   {
     "j-hui/fidget.nvim",
     branch = "legacy",
+    lazy = true,
   },
   {
-    "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
-    init = function()
-      vim.diagnostic.config({
-        float = {
-          show_header = true,
-          source = 'if_many',
-          border = 'rounded',
-          focusable = false,
-        },
-      }, nil)
-    end,
-    dependencies = {
-      "williamboman/mason-lspconfig.nvim",
-    },
+    "simrat39/rust-tools.nvim",
+    ft = "*.rs",
+    event = "LspAttach",
+  },
+  "neovim/nvim-lspconfig",
+  event = { "CursorHold", "CursorHoldI" },
+  init = function()
+    vim.diagnostic.config({
+      float = {
+        show_header = true,
+        source = 'if_many',
+        border = 'rounded',
+        focusable = false,
+      },
+    }, nil)
+  end,
+  dependencies = {
+    "williamboman/mason-lspconfig.nvim",
   },
   {
     "williamboman/mason-lspconfig.nvim",

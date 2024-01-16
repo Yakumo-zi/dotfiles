@@ -1,5 +1,4 @@
 return {
-  -- bufferline
   {
     "akinsho/bufferline.nvim",
     version = "v3.*",

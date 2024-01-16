@@ -49,5 +49,10 @@ return {
       require("project_nvim").setup()
       require("telescope").load_extension("projects")
     end
-  }
+  }, {
+  'NvChad/nvim-colorizer.lua',
+  config = function()
+    require('colorizer').setup()
+  end
+}
 }

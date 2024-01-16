@@ -30,7 +30,7 @@ map("n", "<leader>do", buffers.delete_others, "Other buffers")
 
 map("i", "<C-h>", "<Left>", "Move to left in insert mode")
 map("i", "<C-l>", "<Right>", "Move to right in insert mode")
-map("i", "jk", "<esc>")
+map({ "i", "v" }, "jk", "<esc>")
 
 map("v", "<", "<gv")
 map("v", ">", ">gv")
