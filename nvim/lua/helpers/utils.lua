@@ -11,6 +11,15 @@ M.bash             = function()
   bash:toggle()
 end
 
+M.get_config_path  = function()
+  local os = jit.os
+  local config_path = vim.fn.stdpath('config')
+  if os == "Linux" then
+    return config_path .. "/init.lua"
+  elseif os == "Windows" then
+    return config_path .. "\\init.lua"
+  end
+end
 M.get_sources_file = function(suffix)
   local f = io.popen("ls", "r")
   if f == nil then

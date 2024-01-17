@@ -1,5 +1,5 @@
 local if_nil = vim.F.if_nil
-
+local utils = require('helpers.utils')
 local default_terminal = {
   type = "terminal",
   command = nil,
@@ -88,7 +88,7 @@ local buttons = {
     button("SPC f h", "󰊄  Find help tags"),
     button("SPC f o", "  Recently opened files"),
     button("SPC f g", "󰈬  Find word"),
-    button("SPC f m", "  Open config file", "<cmd>e ~/.config/nvim/init.lua<cr>"),
+    button("SPC f m", "  Open config file", "<cmd>e " .. utils.get_config_path() .. "<cr>"),
   },
   opts = {
     spacing = 1,

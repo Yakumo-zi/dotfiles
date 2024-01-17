@@ -55,7 +55,7 @@ return {
       -- Turn on LSP status information
       require("fidget").setup()
       -- LSP appearance config
-      vim.diagnostic.config({ virtual_text = false }, nil)
+      vim.diagnostic.config({ virtual_text = true }, nil)
 
       -- LSP config
       local capabilities = require('cmp_nvim_lsp').default_capabilities()

@@ -10,10 +10,7 @@ return {
   config = function()
     require('lspsaga').setup({
       callhierarchy = {
-        layout = 'float'
-      },
-      diagnostic = {
-        diagnostic_only_current = true
+        layout = 'float',
       }
     })
   end,

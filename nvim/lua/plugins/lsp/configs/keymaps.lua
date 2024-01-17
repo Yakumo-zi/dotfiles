@@ -5,11 +5,12 @@ M.on_attach = function(client, bufnr)
   buf_set_keymap(bufnr, "n", "gd", "<cmd>Lspsaga peek_definition<cr>", {})
   buf_set_keymap(bufnr, "n", "gp", "<cmd>Lspsaga peek_type_definition<cr>", { desc = "Peek type definition" })
   buf_set_keymap(bufnr, "n", "K", "<cmd>Lspsaga hover_doc<cr>", { desc = "Hover doc" })
-  buf_set_keymap(bufnr, "n", "<leader>fm", ":lua vim.lsp.buf.format { async = true }<CR>",
-    { desc = "Format current buf" })
+  -- buf_set_keymap(bufnr, "n", "<leader>fm", ":lua vim.lsp.buf.format { async = true }<CR>",
+  --   { desc = "Format current buf" })
   buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>Lspsaga rename ++project<cr>", {})
   buf_set_keymap(bufnr, "n", "<leader>fr", "<cmd>Lspsaga finder<cr>", {})
   buf_set_keymap(bufnr, "n", "<leader>so", "<cmd>Lspsaga outline<cr>", {})
+  buf_set_keymap(bufnr, "n", "<leader>gf", "<cmd>lua vim.diagnostic.open_float()<cr>", {})
 end
 M.auto_cmp = function(cmp, luasnip)
   return cmp.mapping.preset.insert({

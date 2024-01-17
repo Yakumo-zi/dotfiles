@@ -3,7 +3,6 @@ local utils = require("helpers.utils")
 local map = require("helpers.keys").map
 local buffers = require("helpers.buffers")
 
-
 map("n", "j", "gj")
 map("n", "k", "gk")
 
