@@ -1,31 +1,24 @@
 local M = {}
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local keymaps_on_attach = require("plugins.lsp.configs.keymaps").on_attach
-
-local lsp_signature_on_attach = function(bufnr)
-  require("lsp_signature").on_attach({
-    bind = true,
-    handler_opts = {
-      border = "rounded"
-    }
-  }, bufnr)
-end
-
-local base_configuration = function(client, bufnr)
-  keymaps_on_attach(client, bufnr)
-  lsp_signature_on_attach(bufnr)
-end
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 M["rust_analyzer"] = function(server_name)
-  require("lspconfig")[server_name].setup({
-    on_attach = function(client, bufnr)
-      base_configuration(client, bufnr)
-    end,
-    capabilities = capabilities,
-  })
-  require("rust-tools").setup {}
+	vim.g.rustaceanvim = {
+		server = {
+			on_attach = function(client, bufnr)
+				local opts = { silent = true, buffer = bufnr }
+				vim.keymap.set("n", "<leader>ca", function()
+					vim.cmd.RustLsp("codeAction")
+				end, opts)
+				vim.keymap.set("n", "K", function()
+					vim.cmd.RustLsp("openDocs")
+				end, opts)
+				vim.keymap.set("n", "<leader>oc", function()
+					vim.cmd.RustLsp("openCargo")
+				end, opts)
+			end,
+		},
+	}
 end
-
 
 return M
