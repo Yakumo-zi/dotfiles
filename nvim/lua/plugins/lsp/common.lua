@@ -14,11 +14,6 @@ return {
 		lazy = true,
 	},
 	{
-		"mrcjkb/rustaceanvim",
-		version = "^4", -- Recommended
-		lazy = false, -- This plugin is already lazy
-	},
-	{
 		"aznhe21/actions-preview.nvim",
 		config = function()
 			vim.keymap.set({ "v", "n" }, "<leader>ca", require("actions-preview").code_actions)
@@ -63,7 +58,7 @@ return {
 			ensure_installed = {
 				"lua_ls",
 				"clangd",
-				"rust",
+				"rust-analyzer",
 			},
 			automatic_installation = true,
 		},
@@ -99,11 +94,8 @@ return {
 						capabilities = capabilities,
 					})
 				end,
+				["rust_analyzer"] = function() end,
 			}
-
-			for server, setup in ipairs(server_configs) do
-				lsp_autoconfig[server] = setup
-			end
 
 			require("mason-lspconfig").setup_handlers(lsp_autoconfig)
 		end,

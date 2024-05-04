@@ -18,6 +18,7 @@ return {
 
 	{
 		"L3MON4D3/LuaSnip",
+		dependencies = { "rafamadriz/friendly-snippets" },
 		version = "v2.*",
 		build = "make install_jsregexp",
 	},
@@ -36,6 +37,7 @@ return {
 			local luasnip = require("luasnip")
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			local lspkind = require("lspkind")
+			require("luasnip.loaders.from_vscode").lazy_load()
 			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 			cmp.setup({
 				enabled = true,

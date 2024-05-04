@@ -1,7 +1,7 @@
 local M = {}
 M.on_attach = function(client, bufnr)
 	local buf_set_keymap = vim.api.nvim_buf_set_keymap
-	buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", {})
+	-- buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", {})
 	buf_set_keymap(bufnr, "n", "gd", "<cmd>Lspsaga peek_definition<cr>", {})
 	buf_set_keymap(bufnr, "n", "gp", "<cmd>Lspsaga peek_type_definition<cr>", { desc = "Peek type definition" })
 	buf_set_keymap(bufnr, "n", "K", "<cmd>Lspsaga hover_doc<cr>", { desc = "Hover doc" })

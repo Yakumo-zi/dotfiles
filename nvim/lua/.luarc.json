@@ -3,6 +3,7 @@
         "unused-local"
     ],
     "diagnostics.globals": [
-        "jjj"
+        "jjj",
+        "get_buffers"
     ]
 }
