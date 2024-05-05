@@ -866,6 +866,3 @@ $env.config = {
     ]
 }
 
-$env.PATH = ($env.PATH | prepend "/home/devil/.local/share/bob/nvim-bin")
-$env.PATH = ($env.PATH | prepend "/home/devil/.cargo/bin")
-source /home/devil/.config/nushell/zoxide.nu

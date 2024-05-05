@@ -357,3 +357,249 @@ rm -rf nvim/
 cp ~/.config/nvim/ .
 cp ~/.config/nvim .
 cp -rf ~/.config/nvim .
+cp -rf ~/.config/nushell/ .
+ls
+clear
+ls
+git add .
+git commit -m "update dotfiles<\n>"
+git config --global user.email "1477717283@qq.com"
+git config --global user.name "Yakumo-zi"
+git commit -m "update dotfiles"
+git push origin main
+z nushel
+z config
+z nushell/
+ls
+clear
+ls
+vim env.nu
+nvim env.nu
+ls
+clear
+ls
+nvim config.nu
+ls ~/.cargo/bin
+ls
+clear
+ls
+souce $nu.config-path
+source $nu.config-path
+ls
+clear
+nvim
+ls
+clear
+ls
+clear
+echo $env.PATH
+exit
+z
+echo $env.PATH
+cargo install fnm
+fnm --json
+fnm env --json
+fnm env --json | from json
+fnm env --json | from json | count
+fnm env --json | from json | lines
+fnm env --json | from json
+fnm env --bash | lines
+fnm env --shell bash | lines
+fnm env --json | from json | load-env
+$env
+$env | grep "FNM"
+fnm --version
+fnm use lts
+fnm env --shell bash | lines
+$env.FNM_MULTISHELL_PATH
+$env.PATH = ($env.PATH | append [<\n>  $env.FNM_MULTISHELL_PATH<\n>])
+$env.PATH
+fnm
+fnm --version
+ls
+clear
+fnm install lts
+fnm use lts
+fnm env --use-on-cd
+fnm env --json --use-on-cd
+fnm env --json --use-on-cd | from json
+fnm env --shell bash --use-on-cd 
+fnm use lts
+ls
+clear
+cd
+sudo pacman -Syyu
+ls
+clear
+ping 8.8.8.8
+ls
+clear
+cat /etc/resolv.conf | grep nameserver
+cat /etc/resolv.conf | grep nameserver | str trim -l "nameserver"
+cat /etc/resolv.conf | grep nameserver | str trim -l "nameserver" “ ”
+str replace .bash_history dotfiles/
+ls
+str replace --help
+cat /etc/resolv.conf | grep nameserver | str replace --all 'nameserver' ''
+cat /etc/resolv.conf | grep nameserver | str replace --all 'nameserver' '' | str trim
+nvim proxy.nu
+ls
+clear
+ls
+clear
+ls
+clear
+ls
+nu proxy.nu
+hostip
+nu proxy.nu
+ls
+clear
+hostname -I
+hostname
+url
+url join
+ls
+clear
+ip
+ifconfig
+config
+ipconfig
+ip
+ip -l
+ip address
+nu proxy.nu
+ip address | lines
+ip address | lines | grep inet
+ip address | lines | grep "inet"
+ip address | lines | grep 2
+ip address | lines | grep 2:
+clear
+wsl hostname -I
+exit
+ip address | lines | grep 2:
+ip address | grep inet
+nvim proxy.nu
+nu proxy.nu
+ls
+clear
+ls
+clear
+ls
+ip addr show eth0
+ip addr
+ip addr show eth0
+ip addr --help
+ip --help
+clear
+ls
+clear
+z nvim
+ls
+clear
+ls
+vim init.lua
+ls
+ip addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
+nvim $nu.config-path
+ls
+nvim init.lua
+ls
+clear
+ls
+vim proxy.nu
+nu proxy.nu
+ls
+clear
+nvim proxy.nu
+nu proxy.nu
+ls
+vim proxy.nu
+nvim proxy.nu
+vim proxy.nu
+nu proxy.nu
+ls
+clear
+ls
+nvim proxy.nu
+nu proxy.nu
+ls
+vim proxy.nu
+nvim proxy.nu
+nu proxy.nu
+ping 8.8.8.8
+ping google
+ping www.google.com
+ls
+clear
+ls
+vim proxy.nu
+nvim proxy.nu
+bash export http_proxy=""
+bash "export http_proxy=''"
+$env | grep "http"
+$env | grep "HTTP"
+nvim proxy.nu
+source ./proxy.nu
+$env | grep "HTTP"
+ping www.google.com
+ls
+clear
+ls
+$env | grep "http"
+nvim proxy.nu
+git --help
+git config --help
+ls -asl
+clear
+ls
+cp proxy.nu ~/.config/nushell/
+ls
+clear
+ls
+rm proxy.nu
+ls
+clear
+z nushell
+ls
+clear
+ls
+rm fnm.nu
+ls
+clear
+ls
+vim proxy.nu
+ls
+clear
+z
+ls
+clear
+ls
+$env | grep "http"
+nvim proxy.nu
+zellij
+ls
+clear
+exit
+z
+ls
+clear
+$env | grep "http"
+ls
+clear
+ping www.google.com
+http get www.google.com
+http get https://www.google.com
+$env.HTTP_PROXY = http://127.0.0.1:7890 | http get https://lumtest.com/myip.json | get country
+ls
+clear
+sudo pacman -Syyu
+ls
+clear
+ls
+cd dotfiles/
+ls
+clear
+ls
+rm -rf nushell/
+cp ~/.config/nushell .
