@@ -1,0 +1,3 @@
+# Prequirements
++ make
++ ripgrep
