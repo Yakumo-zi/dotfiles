@@ -1,0 +1,359 @@
+ls
+clear
+exit
+nu
+ls
+exit
+ls
+clear
+ls
+exit
+cd
+ls
+clear
+ls
+clear
+git clone git@github.com:Yakumo-zi/dotfiles.git
+echo $nu.env-path
+echo $nu.config-path
+vim
+ls
+bob
+sudo pacman -S bob
+bob use stable
+nvim
+exit
+cd
+bob use stable
+bob uinstall stable
+bob uninstall stable
+bob --help
+bob erase 
+bob use stable
+ls
+cd dotfiles/
+ls
+clear
+ls
+cp -rf nvim ~/.config/
+ls
+nvim
+cd ..
+ls
+echo $path
+ls
+cd ..
+ls
+cd
+cd .config/
+ls
+cd nushell/
+ls
+clear
+ls
+vim env.nu
+ls ~/.local/share/bob/nvim-bin/
+$env.PATH = ($env.PATH | split row (char esep) | append "~/.local/share/bob/nvim-bin/")
+$env
+$env.PATH
+nvim
+pacman -S make
+sudo pacman -S makefile
+sudo pacman -S make
+ls
+vim /etc/pacman.d/mirrorlist
+sudo vim /etc/pacman.d/mirrorlist
+ls
+clear
+sudo pacman -Syyu
+sudo pacman -Sy
+ping www.google.com
+ping 8.8.8.8
+ls
+clear
+sudo pacman-mirrors -f5 && sudo pacman -Syyu
+sudo pacman-mirrors
+sudo pacman-mirrors -f5
+sudo pacman -Syyu
+ls
+vim /etc/pacman.d/mirrorlist
+sudo vim /etc/pacman.d/mirrorlist
+ls
+clear
+sudo pacman -Syyu
+clear
+sudo pacman -Syyu
+sudo pacman -S cmake
+sudo pacman -S clang gcc
+ls
+nvim
+sudo pacman -S unzip
+clear
+nvim
+ls
+cd
+ls
+clear
+ls
+mkdir code
+ls
+cd code/
+ls
+clear
+git clone git@github.com:Yakumo-zi/code-recipes.git
+ls
+clear
+ls
+cd code-recipes/
+ls
+clear
+ls
+sudo pacman -S nvm
+sudo pacman -S fnm
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustc --version
+ls ~/.cargo/env
+vim ~/.cargo/env
+ls ~/.cargo/bin
+$env.PATH = ($env.PATH | split row (char esep) | append "/home/devil/.cargo/bin")
+cargo --version
+ls
+clear
+rustc --version
+ls
+clear
+cd
+ls
+clear
+ls
+cd code/
+ls
+clear
+sl
+clear
+cd code-recipes/
+ls
+clea
+clear
+ls
+clear
+ls
+curl -fsSL https://fnm.vercel.app/install | bash
+nvim $nu.config-path
+nvim 
+ls
+nvim $nu.config-path
+nvim
+ls
+clear
+ls
+nvim $nu.config-path
+ls ~/.cargo/bin
+nvim $nu.config-path
+fnm
+cargo install fnm
+fnm
+fnm list
+fnm env
+load-env (fnm env --shell bash | lines | str replace 'export ' '' | str replace -a '"' '' | split column = | rename name value | where name != "FNM_ARCH" && name != "PATH" | reduce -f {} {|it, acc| $acc | upsert $it.name $it.value })
+load-env (fnm env --shell bash | lines | str replace 'export ' '' | str replace -a '"' '' | split column = | rename name value | where name != "FNM_ARCH" ; name != "PATH" | reduce -f {} {|it, acc| $acc | upsert $it.name $it.value })
+fnm env --shell bash
+cd
+sudo pacman -S yyu
+sudo pacman -Syyu
+clear
+ls
+clear
+gcc --version
+rustc --version
+g++ --version
+clang++ --version
+ls
+clear
+fnm
+fnm env
+fnm env --shell bash
+fnm env | str  find-replace -a "export " '' | str find-replace -a '"' '' |  lines | split column = | rename name value | last 5
+ls
+clear
+fnm env --json
+fnm env --json | from json
+fnm env --json | from json | load-env
+let-env PATH = ($env.PATH | split row (char esep) | prepend ([$env.FNM_MULTISHELL_PATH "bin"] | path join))
+$env
+nu --versaion
+nu --version
+ls
+clear
+load-env (fnm env --shell bash | lines | str replace 'export ' '' | str replace -a '"' '' | split column = | rename name value | where name != "FNM_ARCH" and name != "PATH" | reduce -f {} {|it, acc| $acc | upsert $it.name $it.value })
+$env.Path = ($env.Path | append [<\n>  $env.FNM_MULTISHELL_PATH<\n>])
+$env.PATH
+$env.Path
+$env.PATH = ($env.PATH | append [<\n>  $env.FNM_MULTISHELL_PATH<\n>])
+ls
+cd .config/nushell/
+ls
+vim fnm.nu
+nvim fnm.nu
+nvim config.nu
+fnm 
+fnm list
+fnm install 
+fnm -help
+fnm list-remote
+fnm install 20.12.2
+fnm list
+node --version
+source ~/.config/nushell/config.nu
+nvim ~/.config/nushell/fnm.nu
+source ~/.config/nushell/config.nu
+nvim ~/.config/nushell/fnm.nu
+source ~/.config/nushell/config.nu
+source ~/.config/nushell/fnm.nu
+fnm list
+node --version
+node -v
+fnm --help
+fnm env
+fnm env json
+fnm env --shell bash | lines | str replace 'export ' '' | str replace -a '"' '' | split column = | rename name value | where name != "FNM_ARCH" and name != "PATH" | reduce -f {} {|it, acc| $acc | upsert $it.name $it.value }
+ls /home/devil/.local/share/fnm/fnm
+fnm env bash
+fnm env --shell bash | lines | str replace 'export ' '' | str replace -a '"' '' | split column = | rename name value | where name != "FNM_ARCH" and name != "PATH" | reduce -f {} {|it, acc| $acc | upsert $it.name $it.value }
+fnm env --shell bash
+fnm use
+fnm env
+fnm env --shell bash
+fnm env --shell bash | lines | str replace 'export ' '' | str replace -a '"' '' | split column = | rename name value | where name != "FNM_ARCH" and name != "PATH" | reduce -f {} {|it, acc| $acc | upsert $it.name $it.value }
+fnm list
+fnm use v20.12.2
+node --version
+exit
+cd
+fnm list
+node -v
+node --version
+fnm list
+fnm env -bash
+fnm env --shell bash
+cd .config/nushell/
+ls
+vim fnm.nu
+nvim fnm.nu
+ls
+clear
+exit
+cd
+fnm
+fnm list
+fnm use
+fnm current
+fnm exec 
+fnm exec node --version
+fnm exec --using=20 node --version
+clear
+ls
+cargo uinstall fnm
+cargo --help
+cargo uninstall fnm
+ls
+clear
+fnm
+ls
+clear
+cd .config/nushell/
+ls
+clera
+ls
+clear
+ls
+nvim fnm
+nvim fnm.nu
+ls
+clear
+sudo pacman -S zoxide
+z
+zoxide
+zoxide init
+zoxide init nushell
+zoxide init nushell | save -f ~/.config/nushell/zoxide.nu
+nvim ~/.config/nushell/config.nu
+source $env.config
+$env.config
+nvim $nu.config-path
+source $nu.config-path
+ls
+clear
+z
+ls
+clear
+z
+clear
+let remote = "https://raw.githubusercontent.com/nushell/tree-sitter-nu/main/queries/nu/"<\n>let local = (<\n>    $env.XDG_DATA_HOME?<\n>    | default ($env.HOME | path join ".local" "share")<\n>    | path join "nvim" "lazy" "nvim-treesitter" "queries" "nu"<\n>)<\n><\n>let file = "highlights.scm"<\n><\n>mkdir $local<\n>http get ([$remote $file] | str join "/") | save --force ($local | path join $file)
+clear
+nvim $nu.config-path
+z nvim
+z .config/nvim
+ls
+nvim init.lua
+$env.home
+$env.HOME
+ls
+clear
+sudo pacman -S zellij
+ls
+clear
+ls
+clear
+cd
+ls
+clear
+ls
+z nvim
+ls
+clear
+ls
+vim init.lua
+nvim init.lua
+zellij --help
+zellij -c
+zellij run ls
+zellij run
+zellij conver-theme
+zellij convert-theme
+clear
+zellij --help
+zellij
+z config
+z ~/.config/
+ls
+clear
+ls
+z 
+ls
+z dotfiles/
+ls
+clear
+ls
+cd clangd/
+ls
+vim config.yaml
+ls
+clear
+ls
+cd ..
+ls
+rm -rf clangd/
+rm -rf hypr/
+rm -rf hyprv3
+ls
+clear
+ls
+rm -rf waybar/
+ls
+clear
+ls
+rm -rf nvim/
+cp ~/.config/nvim/ .
+cp ~/.config/nvim .
+cp -rf ~/.config/nvim .
