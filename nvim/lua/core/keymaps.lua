@@ -18,8 +18,6 @@ map({ "n" }, "<A-l>", "<cmd>vert res -1<cr>", "Decrease window width")
 map({ "n" }, "<A-k>", "<cmd>res +1<cr>", "Increase window height")
 map({ "n" }, "<A-j>", "<cmd>res -1<cr>", "Decrease window height")
 
-map({ "n", "t" }, "<A-f>", utils.bash_float, "Open float term")
-map({ "n", "t" }, "<C-t>", utils.bash, "Toggle term")
 
 map("n", "bn", ":bnext<CR>")
 map("n", "bp", ":bprevious<CR>")
