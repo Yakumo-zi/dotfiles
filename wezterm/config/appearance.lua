@@ -38,7 +38,7 @@ return {
 
   -- window
   adjust_window_size_when_changing_font_size = true,
-  window_decorations = "INTEGRATED_BUTTONS|RESIZE",
+  window_decorations = "NONE",
   integrated_title_button_style = "Windows",
   integrated_title_button_color = "auto",
   integrated_title_button_alignment = "Right",
