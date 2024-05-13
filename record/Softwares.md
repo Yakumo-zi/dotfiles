@@ -4,3 +4,4 @@
 + yazi
 + fzf
 + ripgrep
++ asdf

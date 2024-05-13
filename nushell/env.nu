@@ -102,4 +102,3 @@ $env.NU_PLUGIN_DIRS = [
 $env.PATH = ($env.PATH | prepend "~/.local/share/bob/nvim-bin")
 $env.PATH = ($env.PATH | prepend "~/.cargo/bin")
 source ~/.config/nushell/zoxide.nu
-source ~/.config/nushell/proxy.nu

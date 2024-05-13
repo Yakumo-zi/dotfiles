@@ -603,3 +603,367 @@ clear
 ls
 rm -rf nushell/
 cp ~/.config/nushell .
+cp -rf nushell ~/.config/
+ls ~/.config/nushell/
+ls
+clear
+ls
+git push origin main
+nvim
+ls
+clear
+nvim
+ls
+clear
+ls
+clear
+z notes
+ls
+z code
+z 
+z code
+z code-recipes/frontend/notes/
+ls
+clear
+ls
+vim app/layout.tsx
+nvim app/layout.tsx
+node --version
+ls
+clear
+ls
+nvi 
+nvim
+ls
+nvim app/layout.tsx
+cd ..
+ls
+cd ..
+ls
+clear
+ls
+cd cpp/
+ls
+cd test/
+ls
+nvim main.cpp
+ls
+clear
+ls
+cd ..
+ls
+cd modern_cpp/
+l
+ls
+clear
+ls
+cd chapter_1/
+ls
+clear
+ls
+vim CMakeLists.txt
+nvim CMakeLists.txt
+ls
+clear
+vim main.cc
+nvim main.cc
+ls
+clear
+z
+ls
+nvim
+ls
+clear
+ls
+clear
+?
+ls
+clear
+history 
+clear
+history --help
+history session
+history | where command =~ cargo | get command
+history
+history | where command =~ cargo | get command
+clear
+zellij setup --dump-config > ~/.config/zellij/config.kdl
+zellij setup --dump-config | ~/.config/zellij/config.kdl
+save --help
+zellij setup --dump-config | save ~/.config/zellij/config.kdl
+mkdir ~/.config/zellij
+zellij setup --dump-config | save ~/.config/zellij/config.kdl
+vim ~/.config/zellij/config.kdl
+ls
+clear
+sudo pacman -S gvm
+ls
+clear
+ls
+cd dotfiles/
+ls
+mkdir softwares.md
+ls
+rm -rf softwares.md/
+mkdir record
+ls
+cd record/
+nvim Softwares.md
+sudo pacman -S yazi
+yazi
+ls
+clear
+ls
+clear
+z
+ls
+z config
+ls
+clear
+ls
+cd yazi/
+ls
+cd flavors/
+ls
+cd ..
+ls
+cd plugins/
+ls
+cd ..
+ls
+clear
+ls
+vim yazi.toml
+nvim yazi.toml
+ls
+clear
+yazi
+exit
+exit
+zellij
+ls
+clear
+exit
+z
+zelli
+zellij
+nvim ~/.config/zellij/config.kdl
+ls
+clear
+nvim
+ls
+clear
+ls
+cd dotfiles/
+cp -rf ~/.config/yazi
+cp -rf ~/.config/yazi .
+cp -rf ~/.config/zellij .
+ls
+rm -rf ~/.config/yazi/
+rm -rf ~/.config/zellij/
+ln -s /home/devil/dotfiles/yazi /home/devil/.config/
+ln -s /home/devil/dotfiles/zellij /home/devil/.config/
+ls ~/.config/
+zellij
+:q
+clear
+yazi
+ls
+clear
+sudo pacman -S fzf
+ls
+clear
+ls
+cd dotfiles/
+ls
+cd record/
+ls
+vim Softwares.md
+ls
+clear
+ls
+nvim $nu.config-path
+ls
+clear
+cd ..
+ls
+git add .
+git commit -m "tidy config"
+git push origin main
+sudo pacman -S curl git
+ls
+clera
+clear
+sudo pacman -S paru
+sudo pacman -S yay
+ls
+clear
+ls
+cd ..
+ls
+mkdir tools
+ls
+cd tools/
+ls
+clear
+ls
+clear
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
+git clone https://github.com/asdf-vm/asdf.git --branch v0.14.0
+ls
+clear
+cd ..
+ls
+nvim $nu.config-path
+ls
+clear
+ls
+cd dotfiles/
+ls
+cd nushell/
+ls
+rm -rf proxy.nu
+ls
+vim config.nu
+nvim env.nu
+ls
+clear
+exit
+z
+ls
+clear
+$env | grep "http"
+ls
+clera
+cclear
+ls
+clear
+ls
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
+ping www.google.com
+clear
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
+ls
+clear
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
+ls
+clear
+ls
+nvim $nu.config-path
+source ~/.config/nushell/asdf.nu
+ls
+asdf --version
+$env | grep "asdf"
+"\n$env.ASDF_DIR = ($env.HOME | path join '.asdf')\n source " + ($env.HOME | path join '.asdf/asdf.nu') | save --append $nu.config-path
+$env | grep "asdf"
+$env.ASDF_DIR = ($env.HOME | path join '.asdf')
+source $env.HOME | path join '.asdf/asdf.nu'
+ls
+ls .asdf 
+cd .asdf/
+ls
+nvim asdf.sh
+ls
+clear
+ls
+cd scripts/
+ls
+cd ..
+ls
+cd ..
+ls
+cd .asdf/
+git status
+ls
+cd ..
+ls
+rm -rf .asdf/
+ls
+clear
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
+rm -rf .asdf/
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+ls
+cd .asdf/
+ls
+clear
+ls
+cd ..
+ls
+rm -rf .asdf/
+l;s
+ls
+clear
+git clone https://github.com/asdf-vm/asdf ~/.asdf
+ls
+cd .asdf/
+ls
+git status
+nvim asdf.nu
+clear
+ls
+cd ..
+ls
+cd .config/nushell/
+ls
+rm -rf asdf.nu
+nvim env.nu
+source ~/.config/nushell/config.nu
+asdf
+asdf --version
+ls
+vim config.nu
+"\n$env.ASDF_DIR = ($env.HOME | path join '.asdf')\n source " + ($env.HOME | path join '.asdf/asdf.nu') | save --append $nu.config-path
+ls
+nvim config.nu
+source ~/.config/nushell/config.nu
+asdf --version
+asdf --help
+asdf list go
+asdf list all go
+asdf list all golang
+asdf install go
+asdf install go 1.22.0
+asdf install golang 1.22.0
+asdf latest golang
+asdf latest go
+asdf latest erlang
+asdf info
+clear
+asdf current
+asdf plugin list
+asdf plugin list -all
+asdf plugin list --urls
+clear
+ls
+z
+ls
+cd .asdf/
+ls
+clear
+ls
+nvim asdf.nu
+asdf plugin list all
+ls
+asd --version
+asdf --version
+asdf list 
+asdf list all
+asdf list all golang
+asdf list all go
+asdf plugin list all
+asdf plugin list all | go
+asdf plugin list all | grep go
+asdf plugin add golang
+asdf list all go
+asdf list all golang
+asdf install golang 1.22.2
+go --verson
+z
+ls
+cd dotfiles/
+ls
+rm -rf nushell/

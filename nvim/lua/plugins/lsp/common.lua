@@ -95,6 +95,7 @@ return {
           })
         end,
         ["rust_analyzer"] = function() end,
+        ["tsserver"] = function() end,
       }
       require("mason-lspconfig").setup_handlers(lsp_autoconfig)
       require 'lspconfig'.nushell.setup {}

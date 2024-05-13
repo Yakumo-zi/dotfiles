@@ -866,3 +866,6 @@ $env.config = {
     ]
 }
 
+$env.ASDF_DIR = ($env.HOME | path join '.asdf')
+ source /home/devil/.asdf/asdf.nu
+
