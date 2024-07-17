@@ -14,6 +14,22 @@ return {
     lazy = true,
   },
   {
+    'kevinhwang91/nvim-ufo',
+    dependencies = {
+      'kevinhwang91/promise-async'
+    },
+    config = function()
+      vim.o.foldcolumn = '1' -- '0' is not bad
+      vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+
+      -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+    end
+  },
+  {
     "aznhe21/actions-preview.nvim",
     config = function()
       vim.keymap.set({ "v", "n" }, "<leader>ca", require("actions-preview").code_actions)
@@ -77,7 +93,10 @@ return {
 
       -- LSP config
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local server_configs = require("plugins.lsp.configs.server_configs")
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true
+      }
       local keymaps = require("plugins.lsp.configs.keymaps")
       local lsp_autoconfig = {
         function(server_name)
@@ -98,7 +117,7 @@ return {
         ["tsserver"] = function() end,
       }
       require("mason-lspconfig").setup_handlers(lsp_autoconfig)
-      require 'lspconfig'.nushell.setup {}
+      require('ufo').setup()
     end,
   },
   {

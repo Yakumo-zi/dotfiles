@@ -8,12 +8,12 @@
 + node.js 20.0.0+
 + zsh(optional)
 + zxoide
-+ zellij
 + vfox
 + exa
 + atuin
 + starship
-
++ make
++ ripgrep
 
 ### Other useful software
 
@@ -23,3 +23,5 @@
 + dust (du tool,write in rust)
 + fzf (fuzzy finder)
 + lazygit (git gui)
++ zellij (terminal multiplexer)
++ glow (markdown preview)
