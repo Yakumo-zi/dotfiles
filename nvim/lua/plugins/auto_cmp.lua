@@ -28,6 +28,11 @@ return {
     build = "make install_jsregexp",
   },
   {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
+  },
+  {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dnpendencies = {
@@ -47,8 +52,8 @@ return {
         enabled = true,
         -- set the completion window border
         window = {
-          completion = { border = "rounded" },
-          documentation = { border = "rounded" },
+          completion = { border = "rounded", winhighlight = "NormalFloat:NormalFloat,FloatBorder:NormalFloat" },
+          documentation = { border = "rounded", winhighlight = "NormalFloat:NormalFloat,FloatBorder:NormalFloat" },
         },
         snippet = {
           expand = function(args)
@@ -78,6 +83,10 @@ return {
           end,
         },
       })
+      vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'NONE', fg = '#D4D4D4' })
+      vim.api.nvim_set_hl(0, 'PmenuSel', { bg = '#5f87af', fg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE', fg = '#5f87af' })
+      vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE' })
     end,
   },
 }
