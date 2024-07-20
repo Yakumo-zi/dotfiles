@@ -14,7 +14,7 @@ return {
     priority = 1000,
     config = function()
       local opt = {
-        flavour = "frappe",
+        flavour = "frappe", -- latte, frappe, macchiato, mocha
         integrations = {
           aerial = true,
           alpha = true,

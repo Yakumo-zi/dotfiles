@@ -31,6 +31,7 @@ return {
         lsp_fallback = true,
       },
     })
+    vim.g.zig_fmt_autosave = false
   end,
   opts = {},
 }

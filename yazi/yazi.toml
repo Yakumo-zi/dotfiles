@@ -2,3 +2,4 @@
 edit = [
 	{ run = 'nvim "$@"', block = true },
 ]
+
