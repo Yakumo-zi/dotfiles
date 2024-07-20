@@ -74,7 +74,6 @@ M.get_current_file_root_path = function(path, patterns)
   for i = #newPaths, 2, -1 do
     for j = 1, #patterns do
       if vim.fn.filereadable(newPaths[i] .. "/" .. patterns[j]) == 1 then
-        vim.notify("Root path: " .. newPaths[i])
         return newPaths[i]
       end
     end

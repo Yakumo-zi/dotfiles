@@ -92,29 +92,40 @@ return {
       vim.diagnostic.config({ virtual_text = true }, nil)
 
       -- LSP config
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      capabilities.textDocument.foldingRange = {
+      local default_cap = require("cmp_nvim_lsp").default_capabilities()
+
+      default_cap.textDocument.foldingRange = {
         dynamicRegistration = false,
         lineFoldingOnly = true
       }
+
       local keymaps = require("plugins.lsp.configs.keymaps")
+      local on_attach = function(client, bufnr)
+        keymaps.on_attach(client, bufnr)
+        require("lsp_signature").on_attach({
+          bind = true,
+          handler_opts = {
+            border = "rounded",
+          },
+        }, bufnr)
+      end
       local lsp_autoconfig = {
         function(server_name)
           require("lspconfig")[server_name].setup({
-            on_attach = function(client, bufnr)
-              keymaps.on_attach(client, bufnr)
-              require("lsp_signature").on_attach({
-                bind = true,
-                handler_opts = {
-                  border = "rounded",
-                },
-              }, bufnr)
-            end,
-            capabilities = capabilities,
+            on_attach = on_attach,
+            capabilities = default_cap,
           })
         end,
         ["rust_analyzer"] = function() end,
         ["tsserver"] = function() end,
+        ["clangd"] = function()
+          local capabilities = default_cap
+          capabilities.offsetEncoding = "utf-16"
+          require("lspconfig").clangd.setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+          })
+        end
       }
       require("mason-lspconfig").setup_handlers(lsp_autoconfig)
       require('ufo').setup()
