@@ -66,6 +66,9 @@ end
 --- @param patterns string[]
 --- @return string
 M.get_current_file_root_path = function(path, patterns)
+  if path == "" or path == nil then
+    return vim.fn.getcwd()
+  end
   local paths = string.split(path, "/")
   local newPaths = {}
   for i = 2, #paths - 1 do
@@ -87,6 +90,9 @@ RootPathCache = {}
 M.cached_get_current_file_root_path = function()
   local path = M.get_buffer_path(0)
   path = string.match(path, "(.*/)")
+  if path == nil then
+    return vim.fn.getcwd()
+  end
   local patterns = { "Cargo.toml", "go.mod", "Makefile", "CMakeLists.txt", "package.json" }
   if RootPathCache[path] == nil then
     RootPathCache[path] = M.get_current_file_root_path(path, patterns)
