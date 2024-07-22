@@ -1,9 +1,5 @@
 return {
   {
-    "folke/neodev.nvim",
-    lazy = true,
-  },
-  {
 
     "RRethy/vim-illuminate",
     event = "LspAttach",
@@ -11,8 +7,26 @@ return {
   {
     "j-hui/fidget.nvim",
     branch = "legacy",
-    lazy = true,
+    opts = {
+      notifications = {
+        window = {
+          winblend = 0
+        }
+      }
+    }
   },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+  { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
   {
     'kevinhwang91/nvim-ufo',
     dependencies = {
@@ -79,15 +93,9 @@ return {
       automatic_installation = true,
     },
     config = function()
-      -- Neodev setup before LSP config
-      require("neodev").setup()
       require("mason").setup()
       require("mason-lspconfig").setup()
 
-      -- Turn on LSP status information
-      require("fidget").setup({
-        window = { winblend = 0 },
-      })
       -- LSP appearance config
       vim.diagnostic.config({ virtual_text = true }, nil)
 

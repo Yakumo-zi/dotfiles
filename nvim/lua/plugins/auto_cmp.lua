@@ -42,6 +42,13 @@ return {
       "hrsh7th/cmp-path",
       "L3MON4D3/LuaSnip",
     },
+    opts = function(_, opts)
+      opts.sources = opts.sources or {}
+      table.insert(opts.sources, {
+        name = "lazydev",
+        group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+      })
+    end,
     config = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
@@ -52,8 +59,14 @@ return {
         enabled = true,
         -- set the completion window border
         window = {
-          completion = { border = "rounded", winhighlight = "NormalFloat:NormalFloat,FloatBorder:NormalFloat" },
-          documentation = { border = "rounded", winhighlight = "NormalFloat:NormalFloat,FloatBorder:NormalFloat" },
+          completion = {
+            border = 'rounded', -- 使用圆角边框
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+          },
+          documentation = {
+            border = 'rounded', -- 使用圆角边框
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+          },
         },
         snippet = {
           expand = function(args)
@@ -83,10 +96,6 @@ return {
           end,
         },
       })
-      vim.api.nvim_set_hl(0, 'Pmenu', { bg = 'NONE', fg = '#D4D4D4' })
-      vim.api.nvim_set_hl(0, 'PmenuSel', { bg = '#5f87af', fg = 'NONE' })
-      vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'NONE', fg = '#5f87af' })
-      vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'NONE' })
     end,
   },
 }

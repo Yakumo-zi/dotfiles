@@ -13,19 +13,25 @@ return {
     name = "catppuccin",
     priority = 1000,
     config = function()
+      --- @type CatppuccinOptions
       local opt = {
+        custom_highlights = function(colors)
+          return {
+            Comment = { fg = colors.flamingo },
+          }
+        end,
+        transparent_background = true,
         flavour = "frappe", -- latte, frappe, macchiato, mocha
         integrations = {
-          aerial = true,
+          barbar = true,
           alpha = true,
           cmp = true,
           dashboard = true,
           flash = true,
+          fidget = true,
           gitsigns = true,
-          headlines = true,
           illuminate = true,
           indent_blankline = { enabled = true },
-          leap = true,
           lsp_trouble = true,
           mason = true,
           markdown = true,
@@ -39,18 +45,20 @@ return {
               information = { "undercurl" },
             },
           },
-          navic = { enabled = true, custom_bg = "lualine" },
-          neotest = true,
-          neotree = true,
-          noice = true,
           notify = true,
-          semantic_tokens = true,
-          telescope = true,
+          telescope = {
+            enabled = true
+          },
           treesitter = true,
           treesitter_context = true,
           which_key = true,
+          nvim_surround = true,
+          ufo = true,
+          symbols_outline = true,
         },
       }
+      vim.api.nvim_set_hl(0, 'FidgetTitle', { link = "NormalFloat" })
+      vim.api.nvim_set_hl(0, 'FidgetTask', { link = "NormalFloat" })
       require("catppuccin").setup(opt)
       vim.cmd.colorscheme("catppuccin")
     end,

@@ -86,7 +86,8 @@ end
 
 RootPathCache = {}
 
---- @return string
+---cached_get_current_file_root_path
+---@return string
 M.cached_get_current_file_root_path = function()
   local path = M.get_buffer_path(0)
   path = string.match(path, "(.*/)")
@@ -99,4 +100,6 @@ M.cached_get_current_file_root_path = function()
   end
   return RootPathCache[path]
 end
+
+
 return M
