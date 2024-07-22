@@ -1,26 +1,23 @@
 local M = {}
-local function noop()
-	print("NOOP")
+
+M.delete_this = function()
+  local buffers = vim.api.nvim_list_bufs()
+  local current = vim.api.nvim_get_current_buf()
+  for _, buf in ipairs(buffers) do
+    if buf == current then
+      vim.api.nvim_buf_delete(buf, { force = true })
+      break
+    end
+  end
 end
-
-local ok, close_buffers = pcall(require, "close_buffers")
-
-if ok then
-	M.delete_this = function()
-		close_buffers.delete({ type = "this" })
-	end
-	M.delete_all = function()
-		close_buffers.delete({ type = "all", force = true })
-	end
-	M.delete_others = function()
-		close_buffers.delete({ type = "other", force = true })
-	end
-else
-	M.delete_this = function()
-		vim.cmd.bdelete()
-	end
-	M.delete_all = noop
-	M.delete_others = noop
+M.delete_others = function()
+  local buffers = vim.api.nvim_list_bufs()
+  local current = vim.api.nvim_get_current_buf()
+  for _, buf in ipairs(buffers) do
+    if buf ~= current then
+      vim.api.nvim_buf_delete(buf, { force = true })
+    end
+  end
 end
 
 return M
