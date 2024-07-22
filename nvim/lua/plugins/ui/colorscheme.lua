@@ -61,6 +61,7 @@ return {
       vim.api.nvim_set_hl(0, 'FidgetTask', { link = "NormalFloat" })
       require("catppuccin").setup(opt)
       vim.cmd.colorscheme("catppuccin")
+      require('lspconfig.ui.windows').default_options.border = 'rounded'
     end,
   },
   {

@@ -17,8 +17,18 @@ if not ok then
 end
 
 lazy.setup({
-  { import = "plugins" },
-  { import = "plugins.utils" },
-  { import = "plugins.lsp" },
-  { import = "plugins.ui" },
+  spec = {
+    { import = "plugins" },
+    { import = "plugins.utils" },
+    { import = "plugins.lsp" },
+    { import = "plugins.ui" },
+  },
+  ui = {
+    border = "rounded",
+    size = {
+      width = 0.8,
+      height = 0.8,
+    }
+  }
+
 })

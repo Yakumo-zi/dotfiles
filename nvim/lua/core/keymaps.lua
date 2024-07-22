@@ -33,4 +33,4 @@ map("v", "<", "<gv")
 map("v", ">", ">gv")
 
 
-map({ "t", "n" }, "<leader>t", utils.term_float_toggle, "Toggle terminal")
+map({ "t", "n" }, "<A-t>", utils.term_float_toggle, "Toggle terminal")
