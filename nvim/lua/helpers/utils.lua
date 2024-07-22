@@ -1,17 +1,19 @@
-local Terminal     = require('toggleterm.terminal').Terminal
-local M            = {}
+local Terminal      = require('toggleterm.terminal').Terminal
+local M             = {}
 
-local bash_float   = Terminal:new({ cmd = "bash", direction = "float" })
-local bash         = Terminal:new({ cmd = "bash", direction = "horizontal" })
+---@type TermCreateArgs
+local term_opts     = {
+  direction = "float",
+  display_name = "float_term"
+}
 
-M.bash_float       = function()
-  bash_float:toggle()
+local term_float    = Terminal:new(term_opts)
+
+M.term_float_toggle = function()
+  term_float:toggle()
 end
-M.bash             = function()
-  bash:toggle()
-end
 
-M.get_config_path  = function()
+M.get_config_path   = function()
   local os = jit.os
   local config_path = vim.fn.stdpath('config')
   if os == "Linux" then
@@ -21,7 +23,7 @@ M.get_config_path  = function()
   end
 end
 
-M.get_sources_file = function(suffix)
+M.get_sources_file  = function(suffix)
   local f = io.popen("ls", "r")
   if f == nil then
     os.exit(1, true)

@@ -1,5 +1,6 @@
 require("helpers.keys").set_leader(" ")
 local map = require("helpers.keys").map
+local utils = require("helpers.utils")
 local buffers = require("helpers.buffers")
 
 map("n", "j", "gj")
@@ -30,3 +31,6 @@ map({ "i" }, "jk", "<esc>")
 
 map("v", "<", "<gv")
 map("v", ">", ">gv")
+
+
+map({ "t", "n" }, "<leader>t", utils.term_float_toggle, "Toggle terminal")

@@ -16,7 +16,10 @@ return {
     {
       "akinsho/toggleterm.nvim",
       version = "*",
-      opts = { --[[ things you want to change go here]]
+      opts = {
+        float_opts = {
+          border = 'curved'
+        }
       },
     },
   },
