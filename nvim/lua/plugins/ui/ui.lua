@@ -1,5 +1,10 @@
 return {
   {
+    "nvim-zh/colorful-winsep.nvim",
+    config = true,
+    event = { "WinLeave" },
+  },
+  {
     "karb94/neoscroll.nvim",
     config = function()
       require("neoscroll").setup({

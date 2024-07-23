@@ -96,7 +96,7 @@ M.cached_get_current_file_root_path = function()
   if path == nil then
     return vim.fn.getcwd()
   end
-  local patterns = { "Cargo.toml", "go.mod", "Makefile", "CMakeLists.txt", "package.json" }
+  local patterns = { "Cargo.toml", "go.mod", "Makefile", "CMakeLists.txt", "package.json", "pytprojcet.toml" }
   if RootPathCache[path] == nil then
     RootPathCache[path] = M.get_current_file_root_path(path, patterns)
   end
