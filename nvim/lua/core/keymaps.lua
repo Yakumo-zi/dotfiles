@@ -19,8 +19,8 @@ map({ "n" }, "<A-k>", "<cmd>res +1<cr>", "Increase window height")
 map({ "n" }, "<A-j>", "<cmd>res -1<cr>", "Decrease window height")
 
 
-map("n", "bn", ":bnext<CR>")
-map("n", "bp", ":bprevious<CR>")
+map("n", "<leader>bn", ":bnext<CR>")
+map("n", "<leader>bp", ":bprevious<CR>")
 
 map("n", "Q", buffers.delete_this, "Current buffer")
 map("n", "<leader>do", buffers.delete_others, "Other buffers")

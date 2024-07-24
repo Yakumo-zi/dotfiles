@@ -28,9 +28,11 @@ return {
     build = "make install_jsregexp",
   },
   {
-    'windwp/nvim-autopairs',
-    event = "InsertEnter",
-    config = true
+    'echasnovski/mini.pairs',
+    version = '*',
+    config = function()
+      require('mini.pairs').setup()
+    end
   },
   {
     "hrsh7th/nvim-cmp",
@@ -52,9 +54,7 @@ return {
     config = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
-      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
       local lspkind = require("lspkind")
-      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
       cmp.setup({
         enabled = true,
         -- set the completion window border
