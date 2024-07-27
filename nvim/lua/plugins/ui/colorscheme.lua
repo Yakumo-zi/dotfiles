@@ -16,11 +16,6 @@ return {
 			--- @type CatppuccinOptions
 			local opt = {
 				term_colors = true,
-				custom_highlights = function(colors)
-					return {
-						Comment = { fg = "#d4eaf7" },
-					}
-				end,
 				transparent_background = true,
 				flavour = "frappe", -- latte, frappe, macchiato, mocha
 				integrations = {

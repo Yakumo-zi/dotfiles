@@ -1,150 +1,146 @@
 return {
-  {
+	{
 
-    "RRethy/vim-illuminate",
-    event = "LspAttach",
-  },
-  {
-    "j-hui/fidget.nvim",
-    branch = "legacy",
-    opts = {
-      notifications = {
-        window = {
-          winblend = 0
-        }
-      }
-    }
-  },
-  {
-    "folke/lazydev.nvim",
-    ft = "lua", -- only load on lua files
-    opts = {
-      library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
-        { path = "luvit-meta/library", words = { "vim%.uv" } },
-      },
-    },
-  },
-  { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
-  {
-    'kevinhwang91/nvim-ufo',
-    dependencies = {
-      'kevinhwang91/promise-async'
-    },
-    config = function()
-      vim.o.foldcolumn = '1' -- '0' is not bad
-      vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
-      vim.o.foldlevelstart = 99
-      vim.o.foldenable = true
+		"RRethy/vim-illuminate",
+		event = "LspAttach",
+	},
+	{
+		"j-hui/fidget.nvim",
+		branch = "legacy",
+		opts = {
+			notifications = {
+				window = {
+					winblend = 0,
+				},
+			},
+		},
+	},
+	{
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		opts = {
+			library = {
+				-- See the configuration section for more details
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "luvit-meta/library", words = { "vim%.uv" } },
+			},
+		},
+	},
+	{ "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = {
+			"kevinhwang91/promise-async",
+		},
+		config = function()
+			vim.o.foldcolumn = "1" -- '0' is not bad
+			vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+			vim.o.foldlevelstart = 99
+			vim.o.foldenable = true
 
-      -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
-      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-    end
-  },
-  {
-    "aznhe21/actions-preview.nvim",
-    config = function()
-      vim.keymap.set({ "v", "n" }, "<leader>ca", require("actions-preview").code_actions)
-      require("actions-preview").setup({
-        telescope = {
-          sorting_strategy = "ascending",
-          layout_strategy = "vertical",
-          layout_config = {
-            width = 0.8,
-            height = 0.9,
-            prompt_position = "top",
-            preview_cutoff = 20,
-            preview_height = function(_, _, max_lines)
-              return max_lines - 15
-            end,
-          },
-        },
-      })
-    end,
-  },
-  "neovim/nvim-lspconfig",
-  event = { "CursorHold", "CursorHoldI" },
-  init = function()
-    vim.diagnostic.config({
-      float = {
-        show_header = true,
-        source = "if_many",
-        border = "rounded",
-        focusable = false,
-      },
-    }, nil)
-  end,
-  dependencies = {
-    "williamboman/mason-lspconfig.nvim",
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = {
-      "williamboman/mason.nvim",
-    },
-    opts = {
-      ensure_installed = {
-        "lua_ls",
-        "clangd",
-        "rust-analyzer",
-      },
-      automatic_installation = true,
-    },
-    config = function()
-      require("mason").setup()
-      require("mason-lspconfig").setup()
+			-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+			vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+			vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+		end,
+	},
+	{
+		"aznhe21/actions-preview.nvim",
+		config = function()
+			vim.keymap.set({ "v", "n" }, "<leader>ca", require("actions-preview").code_actions)
+			require("actions-preview").setup({
+				telescope = {
+					sorting_strategy = "ascending",
+					layout_strategy = "vertical",
+					layout_config = {
+						width = 0.8,
+						height = 0.9,
+						prompt_position = "top",
+						preview_cutoff = 20,
+						preview_height = function(_, _, max_lines)
+							return max_lines - 15
+						end,
+					},
+				},
+			})
+		end,
+	},
+	"neovim/nvim-lspconfig",
+	event = { "CursorHold", "CursorHoldI" },
+	init = function()
+		vim.diagnostic.config({
+			float = {
+				show_header = true,
+				source = "if_many",
+				border = "rounded",
+				focusable = false,
+			},
+		}, nil)
+	end,
+	dependencies = {
+		"williamboman/mason-lspconfig.nvim",
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		dependencies = {
+			"williamboman/mason.nvim",
+		},
+		opts = {
+			ensure_installed = {},
+			automatic_installation = true,
+		},
+		config = function()
+			require("mason").setup()
+			require("mason-lspconfig").setup()
 
-      -- LSP appearance config
-      vim.diagnostic.config({ virtual_text = true }, nil)
+			-- LSP appearance config
+			vim.diagnostic.config({ virtual_text = true }, nil)
 
-      -- LSP config
-      local default_cap = require("cmp_nvim_lsp").default_capabilities()
+			-- LSP config
+			local default_cap = require("cmp_nvim_lsp").default_capabilities()
 
-      default_cap.textDocument.foldingRange = {
-        dynamicRegistration = false,
-        lineFoldingOnly = true
-      }
+			default_cap.textDocument.foldingRange = {
+				dynamicRegistration = false,
+				lineFoldingOnly = true,
+			}
 
-      local keymaps = require("plugins.lsp.configs.keymaps")
-      local on_attach = function(client, bufnr)
-        keymaps.on_attach(client, bufnr)
-        require("lsp_signature").on_attach({
-          bind = true,
-          handler_opts = {
-            border = "rounded",
-          },
-        }, bufnr)
-      end
-      local lsp_autoconfig = {
-        function(server_name)
-          require("lspconfig")[server_name].setup({
-            on_attach = on_attach,
-            capabilities = default_cap,
-          })
-        end,
-        ["rust_analyzer"] = function() end,
-        ["tsserver"] = function() end,
-        ["clangd"] = function()
-          local capabilities = default_cap
-          capabilities.offsetEncoding = "utf-16"
-          require("lspconfig").clangd.setup({
-            on_attach = on_attach,
-            capabilities = capabilities,
-          })
-        end
-      }
-      require("mason-lspconfig").setup_handlers(lsp_autoconfig)
-      require('ufo').setup()
-    end,
-  },
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "VeryLazy",
-    opts = {},
-    config = function(_, opts)
-      require("lsp_signature").setup(opts)
-    end,
-  },
+			local keymaps = require("plugins.lsp.configs.keymaps")
+			local on_attach = function(client, bufnr)
+				keymaps.on_attach(client, bufnr)
+				require("lsp_signature").on_attach({
+					bind = true,
+					handler_opts = {
+						border = "rounded",
+					},
+				}, bufnr)
+			end
+			local lsp_autoconfig = {
+				function(server_name)
+					require("lspconfig")[server_name].setup({
+						on_attach = on_attach,
+						capabilities = default_cap,
+					})
+				end,
+				["tsserver"] = function() end,
+				["clangd"] = function()
+					local utils = require("helpers.utils")
+					local capabilities = utils.deep_copy(default_cap)
+					capabilities.offsetEncoding = "utf-16"
+					require("lspconfig").clangd.setup({
+						on_attach = on_attach,
+						capabilities = capabilities,
+					})
+				end,
+			}
+			require("mason-lspconfig").setup_handlers(lsp_autoconfig)
+			require("ufo").setup()
+		end,
+	},
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "VeryLazy",
+		opts = {},
+		config = function(_, opts)
+			require("lsp_signature").setup(opts)
+		end,
+	},
 }

@@ -80,21 +80,21 @@ M.get_current_file_root_path = function(path, patterns)
 end
 
 RootPathCache = {}
-CurrentDir = vim.fn.getcwd()
 ---cached_get_current_file_root_path
 ---@return string
 M.cached_get_current_file_root_path = function()
+	Changed = false
+	local ret = vim.fn.getcwd()
 	local path = M.get_buffer_path(0)
 	path = string.match(path, "(.*/)")
-	if path == nil then
-		return vim.fn.getcwd()
-	end
 	local patterns = { "Cargo.toml", "go.mod", "Makefile", "CMakeLists.txt", "package.json", "pytprojcet.toml" }
-	if RootPathCache[path] == nil then
-		RootPathCache[path] = M.get_current_file_root_path(path, patterns)
+	if path ~= nil then
+		if RootPathCache[path] == nil then
+			RootPathCache[path] = M.get_current_file_root_path(path, patterns)
+		end
+		ret = RootPathCache[path]
 	end
-	CurrentDir = RootPathCache[path]
-	return RootPathCache[path]
+	return ret
 end
 
 ---@type TermCreateArgs
@@ -109,14 +109,25 @@ local term_opts = {
 		vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
 		vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
 		vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
-		term.change_dir(term, CurrentDir)
-	end,
-	on_close = function(term)
-		term.change_dir(term, CurrentDir)
 	end,
 }
 
 local term_float = Terminal:new(term_opts)
+-- 定义一个函数用于深拷贝
+M.deep_copy = function(orig)
+	local orig_type = type(orig)
+	local copy
+	if orig_type == "table" then
+		copy = {}
+		for orig_key, orig_value in next, orig, nil do
+			copy[M.deep_copy(orig_key)] = M.deep_copy(orig_value)
+		end
+		setmetatable(copy, M.deep_copy(getmetatable(orig)))
+	else -- number, string, boolean, etc
+		copy = orig
+	end
+	return copy
+end
 
 M.term_float_toggle = function()
 	term_float:toggle()
