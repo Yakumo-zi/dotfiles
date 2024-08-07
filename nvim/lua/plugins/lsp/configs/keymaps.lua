@@ -28,8 +28,8 @@ M.on_attach = function(_, bufnr)
 end
 M.auto_cmp = function(cmp, luasnip)
 	return cmp.mapping.preset.insert({
-		["<C-d>"] = cmp.mapping.scroll_docs(4),
-		["<C-u>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<CR>"] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = false,

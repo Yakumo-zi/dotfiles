@@ -3,7 +3,14 @@ return {
 		"hedyhli/outline.nvim",
 		config = function()
 			require("outline").setup({
-				-- Your setup opts here (leave empty to use defaults)
+				symbol_folding = {
+					autofold_depth = 1,
+					auto_unfold = {
+						hovered = false,
+						only = true,
+					},
+					markers = { "", "" },
+				},
 			})
 		end,
 	},

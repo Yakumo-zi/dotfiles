@@ -109,6 +109,18 @@ return {
 						capabilities = default_cap,
 					})
 				end,
+				["clangd"] = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.clangd.setup({
+						on_attach = function(client, bufnr)
+							local cpp_runner = require("test.cpp_runner_ui")
+							local map = require("helpers.keys").lsp_map
+							on_attach(client, bufnr)
+							map("<leader>cr", cpp_runner.run, bufnr, "Run cpp code")
+							map("<leader>cp", cpp_runner.compile, bufnr, "Compile cpp code")
+						end,
+					})
+				end,
 			}
 			require("mason-lspconfig").setup_handlers(lsp_autoconfig)
 			require("ufo").setup()
