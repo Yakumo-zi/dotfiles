@@ -1,7 +1,6 @@
 require("helpers.keys").set_leader(" ")
 local map = require("helpers.keys").map
 local utils = require("helpers.utils")
-local buffers = require("helpers.buffers")
 
 map("n", "j", "gj")
 map("n", "k", "gk")
@@ -22,8 +21,6 @@ map({ "n" }, "<A-j>", "<cmd>res -1<cr>", "Decrease window height")
 map("n", "<leader>bn", ":bnext<CR>")
 map("n", "<leader>bp", ":bprevious<CR>")
 
-map("n", "Q", buffers.delete_this, "Current buffer")
-map("n", "<leader>do", buffers.delete_others, "Other buffers")
 
 map("i", "<C-h>", "<Left>", "Move to left in insert mode")
 map("i", "<C-l>", "<Right>", "Move to right in insert mode")
@@ -32,5 +29,3 @@ map({ "i" }, "jk", "<esc>")
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
-
-map({ "t", "n" }, "<A-t>", utils.term_float_toggle, "Toggle terminal")

@@ -16,12 +16,12 @@ return {
 
 		local live_grep_from_project_root = function()
 			require("telescope.builtin").live_grep({
-				cwd = utils.cached_get_current_file_root_path(),
+				cwd = utils.cached_current_path(),
 			})
 		end
 		local find_files_from_project_root = function()
 			require("telescope.builtin").find_files({
-				cwd = utils.cached_get_current_file_root_path(),
+				cwd = utils.cached_current_path(),
 			})
 		end
 

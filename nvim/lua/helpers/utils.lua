@@ -1,4 +1,3 @@
-local Terminal = require("toggleterm.terminal").Terminal
 local M = {}
 
 M.get_config_path = function()
@@ -82,7 +81,7 @@ end
 RootPathCache = {}
 ---cached_get_current_file_root_path
 ---@return string
-M.cached_get_current_file_root_path = function()
+M.cached_current_path = function()
 	Changed = false
 	local ret = vim.fn.getcwd()
 	local path = M.get_buffer_path(0)
@@ -97,22 +96,6 @@ M.cached_get_current_file_root_path = function()
 	return ret
 end
 
----@type TermCreateArgs
-local term_opts = {
-	direction = "float",
-	display_name = "float_term",
-	on_open = function(term)
-		local opts = { buffer = term.bufnr }
-		vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)
-		vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)
-		vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)
-		vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)
-		vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)
-		vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]], opts)
-	end,
-}
-
-local term_float = Terminal:new(term_opts)
 -- 定义一个函数用于深拷贝
 M.deep_copy = function(orig)
 	local orig_type = type(orig)
@@ -127,10 +110,6 @@ M.deep_copy = function(orig)
 		copy = orig
 	end
 	return copy
-end
-
-M.term_float_toggle = function()
-	term_float:toggle()
 end
 
 return M

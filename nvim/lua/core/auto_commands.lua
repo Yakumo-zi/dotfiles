@@ -1,5 +1,2 @@
-local utils = require("helpers.utils")
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
-	pattern = { "*.*" },
-	command = "lcd %:p:h",
-})
+vim.cmd("autocmd FileType guihua lua require('cmp').setup.buffer { enabled = false }")
+vim.cmd("autocmd FileType guihua_rust lua require('cmp').setup.buffer { enabled = false }")

@@ -5,17 +5,6 @@ return {
 		event = "LspAttach",
 	},
 	{
-		"j-hui/fidget.nvim",
-		branch = "legacy",
-		opts = {
-			notifications = {
-				window = {
-					winblend = 0,
-				},
-			},
-		},
-	},
-	{
 		"folke/lazydev.nvim",
 		ft = "lua", -- only load on lua files
 		opts = {
@@ -118,16 +107,6 @@ return {
 					require("lspconfig")[server_name].setup({
 						on_attach = on_attach,
 						capabilities = default_cap,
-					})
-				end,
-				["tsserver"] = function() end,
-				["clangd"] = function()
-					local utils = require("helpers.utils")
-					local capabilities = utils.deep_copy(default_cap)
-					capabilities.offsetEncoding = "utf-16"
-					require("lspconfig").clangd.setup({
-						on_attach = on_attach,
-						capabilities = capabilities,
 					})
 				end,
 			}

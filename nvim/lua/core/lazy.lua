@@ -19,9 +19,9 @@ end
 lazy.setup({
   spec = {
     { import = "plugins" },
-    { import = "plugins.utils" },
     { import = "plugins.lsp" },
     { import = "plugins.ui" },
+    { import = "plugins.utils" },
   },
   ui = {
     border = "rounded",
