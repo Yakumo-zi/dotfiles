@@ -24,7 +24,7 @@ M.on_attach = function(_, bufnr)
 	buf_map("gr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", bufnr, "Go to preview definition")
 	buf_map("gD", "<cmd>lua require('goto-preview').goto_preview_declaration()<CR>", bufnr, "Go to preview definition")
 	buf_map("q", "<cmd>lua require('goto-preview').close_all_win()<CR>", bufnr, "Go to preview definition")
-	map({ "n" }, "<C-c>o", jump_to_file, "Jump to goal file")
+	map({ "n" }, "<C-c>j", jump_to_file, "Jump to goal file")
 end
 M.auto_cmp = function(cmp, luasnip)
 	return cmp.mapping.preset.insert({

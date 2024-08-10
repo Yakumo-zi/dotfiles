@@ -9,9 +9,10 @@ return {
 		ft = "lua", -- only load on lua files
 		opts = {
 			library = {
-				-- See the configuration section for more details
-				-- Load luvit types when the `vim.uv` word is found
-				{ path = "luvit-meta/library", words = { "vim%.uv" } },
+				{
+					path = "luvit-meta/library",
+					words = { "vim%.uv" },
+				},
 			},
 		},
 	},
@@ -72,6 +73,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = {
 			"williamboman/mason.nvim",
+			"ray-x/go.nvim",
 		},
 		opts = {
 			ensure_installed = {},
@@ -102,6 +104,9 @@ return {
 					},
 				}, bufnr)
 			end
+
+			local lspconfig = require("lspconfig")
+
 			local lsp_autoconfig = {
 				function(server_name)
 					require("lspconfig")[server_name].setup({
@@ -110,7 +115,6 @@ return {
 					})
 				end,
 				["clangd"] = function()
-					local lspconfig = require("lspconfig")
 					lspconfig.clangd.setup({
 						on_attach = function(client, bufnr)
 							local cpp_runner = require("test.cpp_runner_ui")
@@ -119,9 +123,16 @@ return {
 							map("<leader>cr", cpp_runner.run, bufnr, "Run cpp code")
 							map("<leader>cp", cpp_runner.compile, bufnr, "Compile cpp code")
 						end,
+						capabilities = default_cap,
 					})
 				end,
+				["gopls"] = function()
+					local cfg = require("go.lsp").config()
+					cfg.on_attach = on_attach
+					lspconfig.gopls.setup(cfg)
+				end,
 			}
+
 			require("mason-lspconfig").setup_handlers(lsp_autoconfig)
 			require("ufo").setup()
 		end,
