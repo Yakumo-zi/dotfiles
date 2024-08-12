@@ -31,7 +31,8 @@ local function create_floating_window(offset)
 		border = "rounded",
 	}
 	local win = vim.api.nvim_open_win(buf, true, opts)
-
+	vim.api.nvim_buf_set_option(buf, "wrap", true)
+	vim.api.nvim_buf_set_option(buf, "linebreak", true)
 	return buf, win
 end
 
@@ -78,6 +79,8 @@ local function create_floating_menu(items, select_action, offset)
 	end
 
 	map("<cr>", select_menu_item, buf)
+	vim.api.nvim_buf_set_option(buf, "wrap", true)
+	vim.api.nvim_buf_set_option(buf, "linebreak", true)
 	return buf, win
 end
 M.run = function()

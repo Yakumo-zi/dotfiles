@@ -6,14 +6,15 @@ M.directory = utils.cached_current_path()
 M.excludes = { "CMakeFiles", "src", "include", "third_party", "3rd" }
 
 M.build_with_cmake = function(path)
-	local result = io.popen("cd " .. path .. "&&rm -rf " .. path .. "/build" .. "&& cmake -B build && cd build &&make")
+	local result =
+		io.popen("cd " .. path .. "&&rm -rf " .. path .. "/build" .. "&& cmake -B build && cd build &&make 2>&1")
 	local output = result:read("*a")
 	result:close()
 	return output
 end
 
 M.build_with_make = function(path)
-	local result = io.popen("cd " .. path .. "&& make clean && make ")
+	local result = io.popen("cd " .. path .. "&& make clean && make 2>&1")
 	local output = result:read("*a")
 	result:close()
 	return output
@@ -36,11 +37,11 @@ M.build_with_no_config_file = function(dir)
 		::continue::
 	end
 	if is_cpp then
-		local result = io.popen("g++ -o " .. dir .. "/output" .. src)
+		local result = io.popen("g++ -o " .. dir .. "/output" .. src .. " 2>&1")
 		local output = result:read("*a")
 		return output
 	else
-		local result = io.popen("gcc -o " .. dir .. "/output" .. src)
+		local result = io.popen("gcc -o " .. dir .. "/output" .. src .. " 2>&1")
 		local output = result:read("*a")
 		return output
 	end
@@ -81,7 +82,7 @@ M.get_executable_files = function()
 			if ft ~= nil then
 				goto continue
 			end
-			local result = io.popen("file " .. file, "r")
+			local result = io.popen("file " .. file .. " 2>&1", "r")
 			local output = result:read("*a")
 			if string.find(output, "executable") then
 				table.insert(executable, file)
@@ -95,7 +96,7 @@ M.get_executable_files = function()
 end
 
 M.execute_file = function(file)
-	local result = io.popen("exec " .. file)
+	local result = io.popen("exec " .. file .. " 2>&1")
 	local output = result:read("*a")
 	result:close()
 	return output
