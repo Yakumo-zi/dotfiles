@@ -56,4 +56,10 @@ return {
 			require("inc_rename").setup({})
 		end,
 	},
+	{
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		opts = {--[[ things you want to change go here]]
+		},
+	},
 }
