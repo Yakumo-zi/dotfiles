@@ -23,8 +23,8 @@
     pkgs.curl
     pkgs.neofetch
     pkgs.go
-    pkgs.libgcc
     pkgs.rustup
+    pkgs.gcc14
     pkgs.cmake
     pkgs.nodejs_20
     pkgs.bun
@@ -34,7 +34,7 @@
     pkgs.lazygit
     pkgs.gnumake
     pkgs.pnpm
-
+    pkgs.unzip
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -44,12 +44,15 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    ".config/nvim" = {
+      source = ./nvim;
+      recursive = true;
+    };
   };
 
   # Home Manager can also manage your environment variables through
@@ -71,24 +74,22 @@
   home.sessionVariables = {
     EDITOR = "nvim";
   };
-   programs.starship = {
+  programs.starship = {
     enable = true;
     # Configuration written to ~/.config/starship.toml
     settings = {
-      # add_newline = false;
-
-      # character = {
-      #   success_symbol = "[➜](bold green)";
-      #   error_symbol = "[➜](bold red)";
-      # };
-
-      # package.disabled = true;
+      add_newline = false;
+      character = {
+        success_symbol = "[➜](bold green)";
+        error_symbol = "[➜](bold red)";
+      };
+      package.disabled = true;
     };
   };
-  programs.git={
-    enable=true;
-    userName="Yakumo-zi";
-    userEmail="1477717283@qq.com";
+  programs.git = {
+    enable = true;
+    userName = "Yakumo-zi";
+    userEmail = "1477717283@qq.com";
   };
 
   # Let Home Manager install and manage itself.
