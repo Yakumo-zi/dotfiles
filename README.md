@@ -27,3 +27,10 @@
 - zellij (terminal multiplexer)
 - glow (markdown preview)
 - tmux (terminal multiplexer)
+
+
+### 解决在Nix环境下C/C++ 标准头文件使用clangd无法找到的情况
+
+1. 使用Home Manager安装clang-tools
+2. 使用Mason安装clangd（或许不需要这一步，未验证）
+3. 将clangd链接到`~/.local/share/nvim/mason/bin`目录下

@@ -125,6 +125,7 @@ return {
 				end,
 				["clangd"] = function()
 					lspconfig.clangd.setup({
+						cmd = { "clangd" },
 						on_attach = function(client, bufnr)
 							local cpp_runner = require("test.cpp_runner_ui")
 							local map = require("helpers.keys").lsp_map
