@@ -44,6 +44,7 @@
     pkgs.gopls
 
     pkgs.nixd
+    pkgs.jdt-language-server
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -110,6 +111,7 @@
     userName = "Yakumo-zi";
     userEmail = "1477717283@qq.com";
   };
+  programs.java.enable=true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
