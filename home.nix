@@ -37,6 +37,15 @@
     pkgs.docker_27
     pkgs.yazi
     pkgs.clang-tools
+
+    pkgs.lua-language-server
+    pkgs.stylua
+
+    pkgs.gopls
+
+    pkgs.nixd
+    pkgs.rust-analyzer
+
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

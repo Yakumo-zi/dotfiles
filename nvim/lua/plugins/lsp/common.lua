@@ -54,99 +54,91 @@ return {
 			})
 		end,
 	},
-	"neovim/nvim-lspconfig",
-	event = { "CursorHold", "CursorHoldI" },
-	init = function()
-		vim.diagnostic.config({
-			float = {
-				show_header = true,
-				source = "if_many",
-				border = "rounded",
-				focusable = false,
-			},
-		}, nil)
-	end,
-	dependencies = {
-		"williamboman/mason-lspconfig.nvim",
-	},
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"neovim/nvim-lspconfig",
+		event = { "CursorHold", "CursorHoldI" },
+		cmd = "LspInfo",
+		init = function()
+			vim.diagnostic.config({
+				float = {
+					show_header = true,
+					source = "if_many",
+					border = "rounded",
+					focusable = false,
+				},
+			}, nil)
+		end,
 		dependencies = {
-			"williamboman/mason.nvim",
-			"ray-x/go.nvim",
-		},
-		opts = {
-			ensure_installed = {},
-			automatic_installation = true,
+			{ "hrsh7th/cmp-nvim-lsp" },
 		},
 		config = function()
-			require("mason").setup({
-				ui = {
-					border = "rounded",
-					icons = {
-						package_installed = "✓",
-						package_pending = "➜",
-						package_uninstalled = "✗",
+			local lsp_zero = require("lsp-zero")
+
+			local lsp_attach = function(client, bufnr)
+				local opts = { buffer = bufnr }
+				vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
+				vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+				vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
+				vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
+				vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
+				vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
+				vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
+				vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+				vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
+				vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+			end
+
+			lsp_zero.extend_lspconfig({
+				sign_text = true,
+				lsp_attach = lsp_attach,
+				capabilities = require("cmp_nvim_lsp").default_capabilities(),
+			})
+			require("lspconfig").clangd.setup({})
+			require("lspconfig").lua_ls.setup({
+				on_init = function(client)
+					if client.workspace_folders then
+						local path = client.workspace_folders[1].name
+						if vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc") then
+							return
+						end
+					end
+
+					client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+						runtime = {
+							version = "LuaJIT",
+						},
+						workspace = {
+							checkThirdParty = false,
+							library = {
+								vim.env.VIMRUNTIME,
+							},
+						},
+					})
+				end,
+				settings = {
+					Lua = {},
+				},
+			})
+			require("lspconfig").rust_analyzer.setup({
+				settings = {
+					["rust-analyzer"] = {
+						diagnostics = {
+							enable = false,
+						},
 					},
 				},
 			})
-			require("mason-lspconfig").setup()
-
-			-- LSP appearance config
-			vim.diagnostic.config({ virtual_text = true }, nil)
-
-			-- LSP config
-			local default_cap = require("cmp_nvim_lsp").default_capabilities()
-
-			default_cap.textDocument.foldingRange = {
-				dynamicRegistration = false,
-				lineFoldingOnly = true,
-			}
-
-			local keymaps = require("plugins.lsp.configs.keymaps")
-			local on_attach = function(client, bufnr)
-				keymaps.on_attach(client, bufnr)
-				require("lsp_signature").on_attach({
-					bind = true,
-					handler_opts = {
-						border = "rounded",
-					},
-				}, bufnr)
-			end
-
-			local lspconfig = require("lspconfig")
-
-			local lsp_autoconfig = {
-				function(server_name)
-					require("lspconfig")[server_name].setup({
-						on_attach = on_attach,
-						capabilities = default_cap,
-					})
-				end,
-				["clangd"] = function()
-					lspconfig.clangd.setup({
-						cmd = { "clangd" },
-						on_attach = function(client, bufnr)
-							local cpp_runner = require("test.cpp_runner_ui")
-							local map = require("helpers.keys").lsp_map
-							on_attach(client, bufnr)
-							map("<leader>cr", cpp_runner.run, bufnr, "Run cpp code")
-							map("<leader>cp", cpp_runner.compile, bufnr, "Compile cpp code")
-						end,
-						capabilities = default_cap,
-					})
-				end,
-				["gopls"] = function()
-					local cfg = require("go.lsp").config()
-					cfg.on_attach = on_attach
-					lspconfig.gopls.setup(cfg)
-				end,
-			}
-
-			require("mason-lspconfig").setup_handlers(lsp_autoconfig)
-			require("ufo").setup()
+			require("lspconfig").gopls.setup({})
+			require("lspconfig").nixd.setup({})
 		end,
 	},
+	{
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v4.x",
+		lazy = true,
+		config = false,
+	},
+
 	{
 		"ray-x/lsp_signature.nvim",
 		event = "VeryLazy",
