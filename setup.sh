@@ -30,6 +30,8 @@ Pkgs=(
 	'gopls'
 	'nixd'
 	'nodePackages_latest.bash-language-server'
+  'gh'
+  'yazi'
 )
 
 install_pkgs=""
@@ -41,4 +43,5 @@ done
 
 eval "nix-env -iA ${install_pkgs}"
 
-ln -s "$(PWD)/nvim" "$(HOME)/.config/nvim"
+ln -s "$(pwd)/nvim" "${HOME}/.config/nvim"
+ln -s "$(pwd)/yazi" "${HOME}/.config/yazi"
