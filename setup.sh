@@ -1,11 +1,11 @@
-sudo rm -rf /nix
-mv ~/.profile ~/.profile.backup-"${USER}"
-touch ~/.profile
-sh <(curl -L https://nixos.org/nix/install)
-
-if [ -e /home/yakumo/.nix-profile/etc/profile.d/nix.sh ]; then eval '. /home/yakumo/.nix-profile/etc/profile.d/nix.sh'; fi # added by Nix installer
-sudo chown -R "${USER}" /nix
-nix-channel --update
+# sudo rm -rf /nix
+# mv ~/.profile ~/.profile.backup-"${USER}"
+# touch ~/.profile
+# sh <(curl -L https://nixos.org/nix/install)
+#
+# if [ -e /home/yakumo/.nix-profile/etc/profile.d/nix.sh ]; then eval '. /home/yakumo/.nix-profile/etc/profile.d/nix.sh'; fi # added by Nix installer
+# sudo chown -R "${USER}" /nix
+# nix-channel --update
 
 Pkgs=(
   'fastfetch'
@@ -32,6 +32,7 @@ Pkgs=(
 	'nodePackages_latest.bash-language-server'
   'gh'
   'yazi'
+  'tmux'
 )
 
 install_pkgs=""
@@ -45,3 +46,5 @@ eval "nix-env -iA ${install_pkgs}"
 
 ln -s "$(pwd)/nvim" "${HOME}/.config/nvim"
 ln -s "$(pwd)/yazi" "${HOME}/.config/yazi"
+ln -s "$(pwd)/tmux.conf" "${HOME}/.tmux.conf"
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

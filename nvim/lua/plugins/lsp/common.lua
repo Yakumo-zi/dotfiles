@@ -117,7 +117,7 @@ return {
 			})
 			require("lspconfig").gopls.setup({})
 			require("lspconfig").nixd.setup({})
-			require("lspconfig").jdtls.setup({})
+			require("lspconfig").bashls.setup({})
 		end,
 	},
 	{
