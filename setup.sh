@@ -1,11 +1,11 @@
-# sudo rm -rf /nix
-# mv ~/.profile ~/.profile.backup-"${USER}"
-# touch ~/.profile
-# sh <(curl -L https://nixos.org/nix/install)
-#
-# if [ -e /home/yakumo/.nix-profile/etc/profile.d/nix.sh ]; then eval '. /home/yakumo/.nix-profile/etc/profile.d/nix.sh'; fi # added by Nix installer
-# sudo chown -R "${USER}" /nix
-# nix-channel --update
+sudo rm -rf /nix
+mv ~/.profile ~/.profile.backup-"${USER}"
+touch ~/.profile
+sh <(curl -L https://nixos.org/nix/install)
+
+if [ -e /home/yakumo/.nix-profile/etc/profile.d/nix.sh ]; then eval '. /home/yakumo/.nix-profile/etc/profile.d/nix.sh'; fi # added by Nix installer
+sudo chown -R "${USER}" /nix
+nix-channel --update
 
 Pkgs=(
   'fastfetch'
@@ -33,6 +33,7 @@ Pkgs=(
   'gh'
   'yazi'
   'tmux'
+  'starship'
 )
 
 install_pkgs=""
@@ -43,6 +44,8 @@ done
 # echo "nix-env -iA ${install_pkgs}"
 
 eval "nix-env -iA ${install_pkgs}"
+
+echo 'eval "$(starship init bash)"' >> ~/.bashrc
 
 ln -s "$(pwd)/nvim" "${HOME}/.config/nvim"
 ln -s "$(pwd)/yazi" "${HOME}/.config/yazi"
