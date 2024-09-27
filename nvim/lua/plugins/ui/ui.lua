@@ -28,7 +28,28 @@ return {
 		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		config = function()
-			require("bufferline").setup()
+			require("bufferline").setup({
+				options = {
+
+					offsets = {
+						{
+							filetype = "NvimTree",
+							text = "File Explorer",
+							text_align = "center",
+							separator = true,
+						},
+					},
+					diagnostics = "nvim_lsp",
+					diagnostics_indicator = function(count, level, diagnostics_dict, context)
+						local s = " "
+						for e, n in pairs(diagnostics_dict) do
+							local sym = e == "error" and " " or (e == "warning" and " " or " ")
+							s = s .. n .. sym
+						end
+						return s
+					end,
+				},
+			})
 		end,
 	},
 	-- lualine
@@ -49,6 +70,25 @@ return {
 		config = function()
 			vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<cr>", { silent = true, noremap = true })
 			require("nvim-tree").setup({
+				disable_netrw = true,
+				hijack_cursor = true,
+
+				diagnostics = {
+					enable = true,
+					show_on_dirs = true,
+					icons = {
+						hint = "",
+						info = "",
+						warning = "",
+						error = "",
+					},
+				},
+
+				view = {
+					width = 40,
+					side = "left",
+					signcolumn = "yes",
+				},
 				on_attach = function(bufnr)
 					local api = require("nvim-tree.api")
 					local utils = require("helpers.utils")
