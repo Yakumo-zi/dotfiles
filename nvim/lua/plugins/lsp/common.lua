@@ -118,6 +118,11 @@ return {
 			require("lspconfig").gopls.setup({})
 			require("lspconfig").nixd.setup({})
 			require("lspconfig").bashls.setup({})
+			require("lspconfig").phpactor.setup({})
+			require("lspconfig").html.setup({})
+			require("lspconfig").cssls.setup({})
+			require("lspconfig").tailwindcss.setup({})
+			require("lspconfig").emmet_ls.setup({})
 		end,
 	},
 	{
