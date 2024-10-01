@@ -1,6 +1,4 @@
 sudo rm -rf /nix
-mv ~/.profile ~/.profile.backup-"${USER}"
-touch ~/.profile
 sh <(curl -L https://nixos.org/nix/install)
 
 if [ -e /home/yakumo/.nix-profile/etc/profile.d/nix.sh ]; then eval '. /home/yakumo/.nix-profile/etc/profile.d/nix.sh'; fi # added by Nix installer
@@ -34,6 +32,8 @@ Pkgs=(
   'yazi'
   'tmux'
   'starship'
+  'fish'
+  'atuin'
 )
 
 install_pkgs=""
@@ -47,7 +47,7 @@ eval "nix-env -iA ${install_pkgs}"
 
 echo 'eval "$(starship init bash)"' >> ~/.bashrc
 
-ln -s "$(pwd)/nvim" "${HOME}/.config/nvim"
-ln -s "$(pwd)/yazi" "${HOME}/.config/yazi"
+ln -s "$(pwd)/nvim" "${HOME}/.config/"
+ln -s "$(pwd)/yazi" "${HOME}/.config/"
 ln -s "$(pwd)/tmux.conf" "${HOME}/.tmux.conf"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
