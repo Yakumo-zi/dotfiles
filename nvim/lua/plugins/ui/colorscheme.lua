@@ -16,8 +16,9 @@ return {
 			--- @type CatppuccinOptions
 			local opt = {
 				term_colors = true,
+				no_italic = true,
 				transparent_background = true,
-				flavour = "frappe", -- latte, frappe, macchiato, mocha
+				flavour = "latte", -- latte, frappe, macchiato, mocha
 				integrations = {
 					barbar = true,
 					alpha = true,

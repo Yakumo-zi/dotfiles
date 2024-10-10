@@ -121,8 +121,28 @@ return {
 			require("lspconfig").phpactor.setup({})
 			require("lspconfig").html.setup({})
 			require("lspconfig").cssls.setup({})
-			require("lspconfig").tailwindcss.setup({})
-			require("lspconfig").emmet_ls.setup({})
+			require("lspconfig").tailwindcss.setup({
+				settings = {
+					tailwindCSS = {
+						classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
+						includeLanguages = {
+							php = "html",
+							htmlangular = "html",
+							templ = "html",
+						},
+						lint = {
+							cssConflict = "warning",
+							invalidApply = "error",
+							invalidConfigPath = "error",
+							invalidScreen = "error",
+							invalidTailwindDirective = "error",
+							invalidVariant = "error",
+							recommendedVariantOrder = "warning",
+						},
+						validate = true,
+					},
+				},
+			})
 		end,
 	},
 	{

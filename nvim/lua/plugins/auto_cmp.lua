@@ -17,15 +17,23 @@ return {
 	},
 	{
 		"rafamadriz/friendly-snippets",
-		config = function()
-			require("luasnip.loaders.from_vscode").lazy_load()
-		end,
 	},
 	{
 		"L3MON4D3/LuaSnip",
-		dependencies = { "rafamadriz/friendly-snippets" },
 		version = "v2.*",
 		build = "make install_jsregexp",
+		event = "InsertEnter",
+		dependencies = {
+			{
+				{ "saadparwaiz1/cmp_luasnip" },
+				{
+					"rafamadriz/friendly-snippets",
+					config = function()
+						require("luasnip.loaders.from_vscode").lazy_load()
+					end,
+				},
+			},
+		},
 	},
 	{
 		"echasnovski/mini.pairs",
@@ -74,11 +82,12 @@ return {
 					end,
 				},
 				sources = cmp.config.sources({
+					{ name = "copilot" },
 					{ name = "nvim_lsp" },
-				}, {
-					{ name = "path" },
-					{ name = "buffer" },
 					{ name = "luasnip" },
+					{ name = "buffer" },
+					{ name = "treesitter" },
+					{ name = "path" },
 				}),
 				mapping = require("plugins.lsp.configs.keymaps").auto_cmp(cmp, luasnip),
 				formatting = {
@@ -91,18 +100,12 @@ return {
 							maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 							ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
 							show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+							symbol_map = { Copilot = "" },
 						})(entry, vim_item)
 						return vim_item
 					end,
 				},
 			})
-			cmp.event:on("menu_opened", function()
-				vim.b.copilot_suggestion_hidden = true
-			end)
-
-			cmp.event:on("menu_closed", function()
-				vim.b.copilot_suggestion_hidden = false
-			end)
 		end,
 	},
 }
