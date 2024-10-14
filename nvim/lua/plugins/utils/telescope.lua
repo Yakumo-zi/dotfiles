@@ -4,7 +4,7 @@ return {
 	tag = "0.1.5",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	keys = {
-		{ "<leader>fb", "<cmd>Telescope buffers<cr>", "n", desc = "Telescope find buffers" },
+		-- { "<leader>fb", "<cmd>Telescope buffers<cr>", "n", desc = "Telescope find buffers" },
 		{ "<leader>fd", "<cmd>Telescope diagnostics<cr>", "n", desc = "Telescope find diagnostics" },
 		{ "<leader>fh", "<cmd>Telescope help_tags<cr>", "n", desc = "Telescope help tags" },
 		{ "<leader>fo", "<cmd>Telescope oldfiles<cr>", "n", desc = "Telescope recently opened files" },

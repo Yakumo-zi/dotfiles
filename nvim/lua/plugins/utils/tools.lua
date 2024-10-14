@@ -59,4 +59,9 @@ return {
 			require("colorizer").setup({})
 		end,
 	},
+	{
+		"dzfrias/arena.nvim",
+		event = "BufWinEnter",
+		config = true,
+	},
 }

@@ -25,5 +25,7 @@ map("i", "<C-h>", "<Left>", "Move to left in insert mode")
 map("i", "<C-l>", "<Right>", "Move to right in insert mode")
 map({ "i" }, "jk", "<esc>")
 
+map("n", "<leader>fb", require("arena").toggle, "Open Arena")
+
 map("v", "<", "<gv")
 map("v", ">", ">gv")
