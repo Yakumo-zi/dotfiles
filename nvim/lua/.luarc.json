@@ -1,9 +1,0 @@
-{
-    "diagnostics.disable": [
-        "unused-local"
-    ],
-    "diagnostics.globals": [
-        "jjj",
-        "get_buffers"
-    ]
-}
