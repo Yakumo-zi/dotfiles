@@ -21,6 +21,7 @@ local options = {
     ["cpp"] = { "clang-format" },
     ["go"] = { "goimports", "gofmt" },
     ["rust"] = { "rustfmt" },
+    ["ruby"] = { "rubyfmt" },
     ["_"] = { "trim_whitespace" },
   },
   format_on_save = {
