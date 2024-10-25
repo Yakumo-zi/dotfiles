@@ -1,5 +1,5 @@
 return {
-  on_attach = function(client, buf)
+  on_attach = function(_, buf)
     local group = vim.api.nvim_create_augroup("clangd_no_inlay_hints_in_insert", { clear = true })
     vim.keymap.set("n", "<leader>lh", function()
       if require("clangd_extensions.inlay_hints").toggle_inlay_hints() then
