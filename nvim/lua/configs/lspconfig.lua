@@ -21,7 +21,8 @@ for _, lsp in ipairs(servers) do
   }
 end
 local configs = {
-  lua_ls = require("configs.lsp_server_configs.lua_ls")
+  lua_ls = require("configs.lsp_server_configs.lua_ls"),
+  clangd = require("configs.lsp_server_configs.clangd")
 }
 
 -- specific server with custom config
@@ -29,11 +30,11 @@ for server, config in pairs(configs) do
   require("lspconfig")[server].setup(vim.tbl_deep_extend('force', {
     on_attach = function(client, bufnr)
       attach(client, bufnr)
-      if config.attach ~= nil then
-        config.attach(client, bufnr)
+      if config.on_attach ~= nil then
+        config.on_attach(client, bufnr)
       end
     end,
     capabilities = nvlsp.capabilities,
     on_init = nvlsp.on_init,
-  }, config))
+  }, config.opts))
 end
