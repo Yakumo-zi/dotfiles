@@ -9,7 +9,9 @@ local servers = {
   "cssls",
   "gopls",
   "rust_analyzer",
-  "ruby_lsp"
+  "ruby_lsp",
+  "pyright",
+  "bashls",
 }
 local nvlsp = require "nvchad.configs.lspconfig"
 -- default keymap
