@@ -60,5 +60,28 @@ return {
         }
       }
     end
-  }
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "onsails/lspkind.nvim"
+    },
+    opts = function(_, conf)
+      local options = require('configs.nvim-cmp')
+      return vim.tbl_deep_extend('force', conf, options)
+    end
+  },
+  {
+    "Exafunction/codeium.nvim",
+    event = "InsertEnter",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
+    config = function()
+      require("codeium").setup({
+      })
+    end
+  },
+
 }
