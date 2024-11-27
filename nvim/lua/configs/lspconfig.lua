@@ -12,6 +12,7 @@ local servers = {
   "ruby_lsp",
   "pyright",
   "bashls",
+  "asm_lsp"
 }
 local nvlsp = require "nvchad.configs.lspconfig"
 -- default keymap

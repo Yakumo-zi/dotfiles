@@ -10,7 +10,6 @@ end
 Test()
 M.base46 = {
   theme = "ayu_light",
-  transparency = true,
   hl_override = {
     ["@comment"] = { italic = true },
   },
