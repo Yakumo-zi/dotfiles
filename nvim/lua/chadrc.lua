@@ -10,10 +10,6 @@ end
 Test()
 M.base46 = {
   theme = "ayu_light",
-  hl_override = {
-    ["@comment"] = { italic = true },
-  },
-
 }
 M.ui = {
   cmp = {
