@@ -19,14 +19,14 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       -- calling `setup` is optional for customization
-      require("fzf-lua").setup({})
-    end
+      require("fzf-lua").setup {}
+    end,
   },
   {
-    'gelguy/wilder.nvim',
+    "gelguy/wilder.nvim",
     event = "CmdlineEnter",
     config = function()
-      require('configs.wilder')
+      require "configs.wilder"
     end,
   },
   {
@@ -43,15 +43,4 @@ return {
       { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
     },
   },
-  {
-    "amitds1997/remote-nvim.nvim",
-    version = "*", -- Pin to GitHub releases
-    event = { "CmdlineEnter" },
-    dependencies = {
-      "nvim-lua/plenary.nvim",         -- For standard functions
-      "MunifTanjim/nui.nvim",          -- To build the plugin UI
-      "nvim-telescope/telescope.nvim", -- For picking b/w different remote methods
-    },
-    config = true,
-  }
 }

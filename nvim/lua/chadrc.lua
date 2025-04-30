@@ -4,12 +4,11 @@
 
 ---@type ChadrcConfig
 local M = {}
-local function Test()
-
-end
+local function Test() end
 Test()
 M.base46 = {
   theme = "ayu_light",
+  transparency = true,
 }
 M.ui = {
   cmp = {
@@ -17,19 +16,19 @@ M.ui = {
     icons_left = true,
   },
   telescope = {
-    style = "bordered"
+    style = "bordered",
   },
   statusline = {
-    separator_style = "arrow"
-  }
+    separator_style = "arrow",
+  },
 }
 M.nvdash = {
-  load_on_startup = true
+  load_on_startup = true,
 }
 M.term = {
   float = {
-    border = 'rounded'
-  }
+    border = "rounded",
+  },
 }
 
 return M

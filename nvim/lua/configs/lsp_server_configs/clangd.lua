@@ -6,15 +6,15 @@ return {
         vim.api.nvim_create_autocmd("InsertEnter", {
           group = group,
           buffer = buf,
-          callback = require("clangd_extensions.inlay_hints").disable_inlay_hints
+          callback = require("clangd_extensions.inlay_hints").disable_inlay_hints,
         })
         vim.api.nvim_create_autocmd({ "TextChanged", "InsertLeave" }, {
           group = group,
           buffer = buf,
-          callback = require("clangd_extensions.inlay_hints").set_inlay_hints
+          callback = require("clangd_extensions.inlay_hints").set_inlay_hints,
         })
       else
-        vim.api.nvim_clear_autocmds({ group = group, buffer = buf })
+        vim.api.nvim_clear_autocmds { group = group, buffer = buf }
       end
     end, { buffer = buf, desc = "[l]sp [h]ints toggle" })
   end,
@@ -31,9 +31,9 @@ return {
         "meson.build",
         "meson_options.txt",
         "build.ninja"
-      )(fname) or require("lspconfig.util").root_pattern("compile_commands.json", "compile_flags.txt")(
-        fname
-      ) or require("lspconfig.util").find_git_ancestor(fname)
+      )(fname) or require("lspconfig.util").root_pattern("compile_commands.json", "compile_flags.txt")(fname) or require(
+        "lspconfig.util"
+      ).find_git_ancestor(fname)
     end,
     capabilities = {
       offsetEncoding = { "utf-16" },
@@ -52,5 +52,5 @@ return {
       completeUnimported = true,
       clangdFileStatus = true,
     },
-  }
+  },
 }

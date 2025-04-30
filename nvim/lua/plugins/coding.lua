@@ -34,28 +34,27 @@ return {
     opts = {},
     config = function()
       require("typescript-tools").setup {
-        on_attach =
-            function(client, bufnr)
-              client.server_capabilities.documentFormattingProvider = false
-              client.server_capabilities.documentRangeFormattingProvider = false
-            end,
+        on_attach = function(client, bufnr)
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
+        end,
         settings = {
           jsx_close_tag = {
             enable = true,
             filetypes = { "javascriptreact", "typescriptreact" },
-          }
-        }
+          },
+        },
       }
-    end
+    end,
   },
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      "onsails/lspkind.nvim"
+      "onsails/lspkind.nvim",
     },
     opts = function(_, conf)
-      local options = require('configs.nvim-cmp')
-      return vim.tbl_deep_extend('force', conf, options)
-    end
-  }
+      local options = require "configs.nvim-cmp"
+      return vim.tbl_deep_extend("force", conf, options)
+    end,
+  },
 }
