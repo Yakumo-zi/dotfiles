@@ -1,0 +1,19 @@
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+    set -g Desktop /mnt/c/Users/14777/Desktop
+    if type -q starship
+        starship init fish | source
+    end
+    if type -q cargo
+        fish_add_path ~/.cargo/bin
+    end
+    if type -q go
+        fish_add_path ~/go/bin
+    end
+    if type -q helix
+        alias hx helix
+    end
+    if type -q vfox
+        vfox activate fish | source
+    end
+end

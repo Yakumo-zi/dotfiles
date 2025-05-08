@@ -12,6 +12,7 @@ local options = {
     ["markdown"] = { "prettier" },
     ["lua"] = { "stylua" },
     ["cpp"] = { "clang-format" },
+    ["c"] = { "clang-format" },
     ["go"] = { "goimports", "gofmt" },
     ["rust"] = { "rustfmt" },
     ["_"] = { "trim_whitespace" },
