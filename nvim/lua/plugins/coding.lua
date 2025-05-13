@@ -50,6 +50,9 @@ return {
   { import = "nvchad.blink.lazyspec" },
   {
     "Saghen/blink.cmp",
+    dependencies = {
+      "Kaiser-Yang/blink-cmp-avante",
+    },
     opts = require "configs.blink",
   },
   {
