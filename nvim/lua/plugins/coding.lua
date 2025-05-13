@@ -47,19 +47,31 @@ return {
       }
     end,
   },
-  -- {
-  --   "hrsh7th/nvim-cmp",
-  --   dependencies = {
-  --     "onsails/lspkind.nvim",
-  --   },
-  --   opts = function(_, conf)
-  --     local options = require "configs.nvim-cmp"
-  --     return vim.tbl_deep_extend("force", conf, options)
-  --   end,
-  -- },
   { import = "nvchad.blink.lazyspec" },
   {
     "Saghen/blink.cmp",
     opts = require "configs.blink",
+  },
+  {
+    "rachartier/tiny-code-action.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+
+      -- optional picker via telescope
+      { "nvim-telescope/telescope.nvim" },
+      -- optional picker via fzf-lua
+      { "ibhagwan/fzf-lua" },
+      -- .. or via snacks
+      {
+        "folke/snacks.nvim",
+        opts = {
+          terminal = {},
+        },
+      },
+    },
+    event = "LspAttach",
+    opts = {
+      backend = "delta",
+    },
   },
 }
