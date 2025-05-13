@@ -1,6 +1,7 @@
 dofile(vim.g.base46_cache .. "lsp")
 require("nvchad.lsp").diagnostic_config()
 local map = vim.keymap.set
+local unmap = vim.keymap.del
 local lspconfig = require "lspconfig"
 
 -- default server
@@ -12,7 +13,9 @@ local nvlsp = require "nvchad.configs.lspconfig"
 -- default keymap
 local attach = function(client, bufnr)
   nvlsp.on_attach(client, bufnr)
-  map("n", "gr", "<cmd> Telescope lsp_references<CR>", { buffer = bufnr })
+  unmap("n", "<leader>ra", { buffer = bufnr })
+  map("n", "gr", "<cmd> Telescope lsp_references<CR>", { buffer = bufnr, desc = "LSP find references" })
+  map("n", "<leader>rn", require "nvchad.lsp.renamer", { buffer = bufnr, desc = "LSP NvRenamer" })
 end
 
 -- lsps with default config

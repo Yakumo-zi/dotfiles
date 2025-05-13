@@ -8,7 +8,6 @@ local function Test() end
 Test()
 M.base46 = {
   theme = "ayu_light",
-  transparency = true,
 }
 M.ui = {
   cmp = {

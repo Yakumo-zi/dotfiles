@@ -13,7 +13,4 @@ if status is-interactive
     if type -q helix
         alias hx helix
     end
-    if type -q vfox
-        vfox activate fish | source
-    end
 end
