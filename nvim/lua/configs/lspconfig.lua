@@ -26,6 +26,9 @@ local attach = function(client, bufnr)
   map("n", "K", function()
     vim.lsp.buf.hover { border = "rounded" }
   end, { buffer = bufnr, desc = "LSP show details" })
+  map("n", "<leader>ca", function()
+    vim.lsp.buf.code_action()
+  end, { buffer = bufnr, desc = "LSP show code action" })
 end
 
 -- lsps with default config
