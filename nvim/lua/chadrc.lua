@@ -4,10 +4,8 @@
 
 ---@type ChadrcConfig
 local M = {}
-local function Test() end
-Test()
 M.base46 = {
-  theme = "ayu_light",
+  theme = "one_light",
 }
 M.ui = {
   cmp = {
@@ -18,7 +16,7 @@ M.ui = {
     style = "bordered",
   },
   statusline = {
-    separator_style = "arrow",
+    theme = "vscode_colored",
   },
 }
 M.nvdash = {

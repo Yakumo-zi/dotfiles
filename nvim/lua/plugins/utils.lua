@@ -23,13 +23,6 @@ return {
     end,
   },
   {
-    "gelguy/wilder.nvim",
-    event = "CmdlineEnter",
-    config = function()
-      require "configs.wilder"
-    end,
-  },
-  {
     "folke/flash.nvim",
     event = "VeryLazy",
     ---@type Flash.Config

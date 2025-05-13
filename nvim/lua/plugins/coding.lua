@@ -47,14 +47,19 @@ return {
       }
     end,
   },
+  -- {
+  --   "hrsh7th/nvim-cmp",
+  --   dependencies = {
+  --     "onsails/lspkind.nvim",
+  --   },
+  --   opts = function(_, conf)
+  --     local options = require "configs.nvim-cmp"
+  --     return vim.tbl_deep_extend("force", conf, options)
+  --   end,
+  -- },
+  { import = "nvchad.blink.lazyspec" },
   {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "onsails/lspkind.nvim",
-    },
-    opts = function(_, conf)
-      local options = require "configs.nvim-cmp"
-      return vim.tbl_deep_extend("force", conf, options)
-    end,
+    "Saghen/blink.cmp",
+    opts = require "configs.blink",
   },
 }
