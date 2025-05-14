@@ -1,5 +1,5 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+    cd ~
     set -g Desktop /mnt/c/Users/14777/Desktop
     if type -q starship
         starship init fish | source
