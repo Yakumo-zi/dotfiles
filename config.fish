@@ -1,5 +1,4 @@
 if status is-interactive
-    cd ~
     set -g Desktop /mnt/c/Users/14777/Desktop
     if type -q starship
         starship init fish | source
