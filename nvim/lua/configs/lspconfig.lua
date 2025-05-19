@@ -9,6 +9,7 @@ local nvlsp = require "nvchad.configs.lspconfig"
 local servers = {
   "gopls",
   "rust_analyzer",
+  "zls",
 }
 
 local configs = {

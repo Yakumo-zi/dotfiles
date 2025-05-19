@@ -15,6 +15,7 @@ local options = {
     ["c"] = { "clang-format" },
     ["go"] = { "goimports", "gofmt" },
     ["rust"] = { "rustfmt" },
+    ["haskell"] = { "fourmolu" },
     ["_"] = { "trim_whitespace" },
   },
   format_on_save = {

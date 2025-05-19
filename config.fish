@@ -1,5 +1,5 @@
 if status is-interactive
-    set -g Desktop /mnt/c/Users/14777/Desktop
+    set -gx Desktop /mnt/c/Users/14777/Desktop
     if type -q starship
         starship init fish | source
     end
@@ -12,4 +12,5 @@ if status is-interactive
     if type -q helix
         alias hx helix
     end
+    fish_add_path ~/.ghcup/bin/
 end
