@@ -1,7 +1,22 @@
 # dotfiles
 
-## Usage 
+## prepare
 
-1. clone thie repo.
-2. `chmod +x setup.sh`
-3. `./setup.sh`
+### cmdline tool
+
+- fzf
+- rg
+- bat
+- delta
+- exa
+
+### lsp
+
+- clangd
+- gopls
+- lua-language-server
+
+
+## usage
+
+softlink to target position
