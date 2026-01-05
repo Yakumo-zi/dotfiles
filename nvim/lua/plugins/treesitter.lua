@@ -8,22 +8,33 @@ return {
       "nvim-treesitter/nvim-treesitter-textobjects",
     },
     config = function()
+      local ensure_installed = {
+        "lua",
+        "vim",
+        "vimdoc",
+        "html",
+        "css",
+        "typescript",
+        "javascript",
+        "c",
+        "cpp",
+        "go",
+        "rust",
+        "bash",
+        "python",
+      }
+
+      local has_tree_sitter_cli = vim.fn.executable("tree-sitter") == 1
+      local has_swift_parser = vim.fn.filereadable(
+        vim.fn.stdpath("data") .. "/lazy/nvim-treesitter/parser/swift.so"
+      ) == 1
+
+      if has_tree_sitter_cli or has_swift_parser then
+        table.insert(ensure_installed, "swift")
+      end
+
       require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "lua",
-          "vim",
-          "vimdoc",
-          "html",
-          "css",
-          "typescript",
-          "javascript",
-          "c",
-          "cpp",
-          "go",
-          "rust",
-          "bash",
-          "python",
-        },
+        ensure_installed = ensure_installed,
         highlight = {
           enable = true,
         },
