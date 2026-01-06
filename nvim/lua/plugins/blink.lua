@@ -1,5 +1,6 @@
 return {
   "saghen/blink.cmp",
+  build = "cargo build --release",
   version = "1.*",
   event = "InsertEnter",
   dependencies = {
