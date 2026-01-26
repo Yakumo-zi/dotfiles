@@ -21,6 +21,7 @@ return {
         ["typescript"] = { "prettier" },
         ["python"] = { "ruff" },
         ["json"] = { "prettier" },
+        ["zig"] = { "zigfmt" },
       },
     },
   },
