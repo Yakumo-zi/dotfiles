@@ -9,7 +9,7 @@ map("n", "<leader>ep", "<cmd>edit ~/.config/nvim/init.lua <CR>", { remap = true 
 -- bufferline, cycle buffers
 map("n", "<Tab>", "<cmd> BufferNext <CR>")
 map("n", "<S-Tab>", "<cmd> BufferPrevious <CR>")
-map("n", "<C-q>", "<cmd> bd <CR>")
+map("n", "QQ", "<cmd> bd <CR>")
 
 -- comment.nvim
 map("n", "<leader>/", "gcc", { remap = true })

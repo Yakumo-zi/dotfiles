@@ -7,9 +7,7 @@ return {
       "folke/lazydev.nvim",
       "j-hui/fidget.nvim",
     },
-    config = function()
-      -- LSP is now started in after/ftplugin/<filetype>.lua
-    end,
+    config = function() require("lsp").setup() end,
   },
   {
     "folke/lazydev.nvim",
