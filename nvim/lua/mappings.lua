@@ -10,7 +10,7 @@ map("n", "<leader>ep", "<cmd>edit ~/.config/nvim/init.lua <CR>", { remap = true 
 map("n", "<Tab>", "<cmd> BufferNext <CR>")
 map("n", "<S-Tab>", "<cmd> BufferPrevious <CR>")
 map("n", "QQ", "<cmd> q <CR>")
-map("n", "<leader>bw", "<cmd> BufferClose <CR>")
+map("n", "<leader>bc", "<cmd> BufferClose <CR>")
 
 -- comment.nvim
 map("n", "<leader>/", "gcc", { remap = true })

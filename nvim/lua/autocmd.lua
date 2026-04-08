@@ -9,3 +9,8 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "go", "c", "cpp", "rust", "lua", "py","ts","js","sh" },
+  callback = function() vim.treesitter.start() end,
+})
