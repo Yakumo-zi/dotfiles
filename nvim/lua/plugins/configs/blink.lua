@@ -24,14 +24,10 @@ return {
         max_items = 4,
         score_offset = -2,
       },
-      emoji = {
-        name = "Emoji",
-        module = "blink-emoji",
-      },
       lazydev = {
         name = "LazyDev",
         module = "lazydev.integrations.blink",
-        fallbacks = { "LSP" },
+        score_offset = 100,
       },
       lsp = {
         name = "LSP",

@@ -5,21 +5,17 @@ local function set_python_path(command)
     bufnr = vim.api.nvim_get_current_buf(),
     name = "pyright",
   })
+
   for _, client in ipairs(clients) do
-    if client.settings then
-      client.settings.python = vim.tbl_deep_extend(
-        "force",
-        client.settings.python --[[@as table]],
-        { pythonPath = path }
-      )
-    else
-      client.config.settings = vim.tbl_deep_extend(
-        "force",
-        client.config.settings,
-        { python = { pythonPath = path } }
-      )
-    end
-    client:notify("workspace/didChangeConfiguration", { settings = nil })
+    local settings = vim.tbl_deep_extend(
+      "force",
+      client.config.settings or {},
+      { python = { pythonPath = path } }
+    )
+
+    client.config.settings = settings
+    client.settings = settings
+    client:notify("workspace/didChangeConfiguration", { settings = settings })
   end
 end
 
@@ -44,8 +40,8 @@ return {
   },
   on_attach = function(client, bufnr)
     local root_dir = client.config.root_dir
-    local default_venv_path = root_dir .. "/" .. ".venv/bin/python"
-    if utils.path_exist(default_venv_path) then
+    local default_venv_path = root_dir and (root_dir .. "/.venv/bin/python")
+    if default_venv_path and utils.path_exist(default_venv_path) then
       set_python_path({
         args = default_venv_path,
       })

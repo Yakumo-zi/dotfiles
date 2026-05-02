@@ -1,7 +1,8 @@
 -- bootstrap plugins & lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim" -- path where its going to be installed
+local uv = vim.uv or vim.loop
 
-if not vim.loop.fs_stat(lazypath) then
+if not uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -15,10 +16,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 
-require("lazy").setup("plugins", require("lazy_config"))
+require("lazy").setup({
+  { import = "plugins" },
+}, require("lazy_config"))
 require("options")
 require("mappings")
-require("commands")
 require("autocmd")
 
 vim.cmd("colorscheme catppuccin-latte")

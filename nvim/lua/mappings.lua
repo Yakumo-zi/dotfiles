@@ -1,23 +1,24 @@
 local map = vim.keymap.set
 
 -- general mappings
-map("n", "<C-s>", "<cmd> w <CR>")
-map("i", "jk", "<ESC>")
-map("n", "<C-c>", "<cmd> %y+ <CR>") -- copy whole filecontent
-map("n", "<leader>ep", "<cmd>edit ~/.config/nvim/init.lua <CR>", { remap = true })
+map("n", "<C-s>", "<cmd>w<CR>", { desc = "Save file" })
+map("i", "jk", "<Esc>", { desc = "Exit insert mode" })
+map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "Copy whole file" })
+map(
+  "n",
+  "<leader>ep",
+  "<cmd>edit ~/.config/nvim/init.lua<CR>",
+  { desc = "Edit config" }
+)
 
--- bufferline, cycle buffers
-map("n", "<Tab>", "<cmd> BufferNext <CR>")
-map("n", "<S-Tab>", "<cmd> BufferPrevious <CR>")
-map("n", "QQ", "<cmd> q <CR>")
-map("n", "<leader>bc", "<cmd> BufferClose <CR>")
+map("n", "QQ", "<cmd>q<CR>", { desc = "Close window" })
 
--- comment.nvim
-map("n", "<leader>/", "gcc", { remap = true })
-map("v", "<leader>/", "gc", { remap = true })
+-- native comment operator
+map("n", "<leader>/", "gcc", { desc = "Toggle comment", remap = true })
+map("v", "<leader>/", "gc", { desc = "Toggle comment", remap = true })
 
 -- change window
-map({ "n", "t" }, "<c-h>", "<cmd> wincmd h<CR>")
-map({ "n", "t" }, "<c-j>", "<cmd> wincmd j<CR>")
-map({ "n", "t" }, "<c-k>", "<cmd> wincmd k<CR>")
-map({ "n", "t" }, "<c-l>", "<cmd> wincmd l<CR>")
+map({ "n", "t" }, "<c-h>", "<cmd>wincmd h<CR>", { desc = "Go to left window" })
+map({ "n", "t" }, "<c-j>", "<cmd>wincmd j<CR>", { desc = "Go to lower window" })
+map({ "n", "t" }, "<c-k>", "<cmd>wincmd k<CR>", { desc = "Go to upper window" })
+map({ "n", "t" }, "<c-l>", "<cmd>wincmd l<CR>", { desc = "Go to right window" })

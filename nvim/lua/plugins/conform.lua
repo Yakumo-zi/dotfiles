@@ -5,7 +5,7 @@ return {
     keys = {
       {
         "<leader>fm",
-        function() require("conform").format({ lsp_fallback = true }) end,
+        function() require("conform").format({ lsp_format = "fallback" }) end,
         desc = "Format Files",
       },
     },
@@ -19,7 +19,7 @@ return {
         ["javascript"] = { "prettier" },
         ["javascriptreact"] = { "prettier" },
         ["typescript"] = { "prettier" },
-        ["python"] = { "ruff" },
+        ["python"] = { "ruff_format" },
         ["json"] = { "prettier" },
         ["zig"] = { "zigfmt" },
       },

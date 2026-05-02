@@ -1,7 +1,11 @@
 return {
   { "nvim-tree/nvim-web-devicons", opts = {} },
   { "echasnovski/mini.statusline", opts = {} },
-  { "lewis6991/gitsigns.nvim", opts = {} },
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {},
+  },
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -17,6 +21,11 @@ return {
       "nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
     },
     init = function() vim.g.barbar_auto_setup = false end,
+    keys = {
+      { "<Tab>", "<cmd>BufferNext<CR>", desc = "Next buffer" },
+      { "<S-Tab>", "<cmd>BufferPrevious<CR>", desc = "Previous buffer" },
+      { "<leader>bc", "<cmd>BufferClose<CR>", desc = "Close buffer" },
+    },
     opts = {},
     version = "^1.0.0", -- optional: only update when a new 1.x version is released
   },
@@ -74,6 +83,7 @@ return {
   },
   {
     "brenoprata10/nvim-highlight-colors",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       vim.opt.termguicolors = true
       require("nvim-highlight-colors").setup({})

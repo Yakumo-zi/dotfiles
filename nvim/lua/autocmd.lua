@@ -1,5 +1,8 @@
 vim.o.updatetime = 300
+local augroup = vim.api.nvim_create_augroup("UserAutocmds", { clear = true })
+
 vim.api.nvim_create_autocmd("BufReadPost", {
+  group = augroup,
   pattern = "*",
   callback = function()
     local mark = vim.api.nvim_buf_get_mark(0, '"')
@@ -11,6 +14,17 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "go", "c", "cpp", "rust", "lua", "py","ts","js","sh" },
-  callback = function() vim.treesitter.start() end,
+  group = augroup,
+  pattern = "*",
+  callback = function(args)
+    local ft = vim.bo[args.buf].filetype
+    if ft == "" then return end
+
+    local lang = vim.treesitter.language.get_lang(ft) or ft
+    local parser = ("parser/%s.*"):format(lang)
+
+    if #vim.api.nvim_get_runtime_file(parser, false) > 0 then
+      pcall(vim.treesitter.start, args.buf, lang)
+    end
+  end,
 })

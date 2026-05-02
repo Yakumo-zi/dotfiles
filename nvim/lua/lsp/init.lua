@@ -1,82 +1,25 @@
 local M = {}
 
 local augroup = vim.api.nvim_create_augroup("UserLspConfig", { clear = true })
-
-local servers = {
-  "clangd",
-  "gopls",
-  "lua_ls",
-  "ocamllsp",
-  "pyright",
-  "ts_ls",
-  "zls",
-}
+local keymaps = require("lsp.keymaps")
+local servers = require("lsp.servers")
 
 local function load_server_config(name)
   local module_name = "lsp." .. name
-  local ok, config = pcall(require, module_name)
+  local module_path = ("lua/%s.lua"):format(module_name:gsub("%.", "/"))
+  if #vim.api.nvim_get_runtime_file(module_path, false) == 0 then return {} end
 
-  if ok then return config end
-
-  if config:find(("module '%s' not found"):format(module_name), 1, true) then
-    return {}
-  end
-
-  error(config)
-end
-
-local function set_default_keymaps(bufnr)
-  local opts = { buffer = bufnr, silent = true }
-
-  vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-
-  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-  vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-  vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-  vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-  vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-  vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-  vim.keymap.set(
-    "n",
-    "K",
-    function() vim.lsp.buf.hover({ border = "rounded" }) end,
-    opts
-  )
-  vim.keymap.set(
-    "n",
-    "<space>wl",
-    function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
-    opts
-  )
-end
-
-local function set_rust_keymaps(bufnr)
-  local opts = { buffer = bufnr, silent = true }
-
-  vim.keymap.set(
-    "n",
-    "<leader>ca",
-    function() vim.cmd.RustLsp("codeAction") end,
-    opts
-  )
-
-  vim.keymap.set("n", "K", function() vim.cmd.RustLsp({ "hover" }) end, opts)
+  return require(module_name)
 end
 
 local function setup_lsp_attach()
+  vim.api.nvim_clear_autocmds({ group = augroup })
+
   vim.api.nvim_create_autocmd("LspAttach", {
     group = augroup,
     callback = function(ev)
       local client = vim.lsp.get_client_by_id(ev.data.client_id)
-
-      set_default_keymaps(ev.buf)
-
-      if
-        client
-        and (client.name == "rust-analyzer" or client.name == "rust_analyzer")
-      then
-        set_rust_keymaps(ev.buf)
-      end
+      keymaps.on_attach(client, ev.buf)
     end,
   })
 end
