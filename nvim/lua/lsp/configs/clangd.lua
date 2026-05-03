@@ -5,7 +5,7 @@ return {
     "clangd",
     "-j=6",
     "--all-scopes-completion",
-    "--background-index", -- should include a compile_commands.json or .txt
+    "--background-index",
     "--clang-tidy",
     "--cross-file-rename",
     "--completion-style=detailed",

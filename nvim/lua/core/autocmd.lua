@@ -1,4 +1,5 @@
 vim.o.updatetime = 300
+
 local augroup = vim.api.nvim_create_augroup("UserAutocmds", { clear = true })
 
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -20,7 +21,9 @@ vim.api.nvim_create_autocmd("FileType", {
     local ft = vim.bo[args.buf].filetype
     if ft == "" then return end
 
-    local lang = vim.treesitter.language.get_lang(ft) or ft
+    local ok, lang = pcall(vim.treesitter.language.get_lang, ft)
+    if not ok or not lang then lang = ft end
+
     local parser = ("parser/%s.*"):format(lang)
 
     if #vim.api.nvim_get_runtime_file(parser, false) > 0 then

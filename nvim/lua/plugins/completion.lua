@@ -1,6 +1,8 @@
+local env = require("env")
+
 return {
   "saghen/blink.cmp",
-  build = "cargo build --release",
+  build = env.executable("cargo") and "cargo build --release" or nil,
   version = "1.*",
   event = "InsertEnter",
   dependencies = {

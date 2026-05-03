@@ -1,7 +1,11 @@
+local env = require("env")
+
 return {
   snippets = { preset = "luasnip" },
   appearance = { nerd_font_variant = "mono" },
-  fuzzy = { implementation = "prefer_rust" },
+  fuzzy = {
+    implementation = env.executable("cargo") and "prefer_rust" or "lua",
+  },
   sources = {
     default = function()
       local success, node = pcall(vim.treesitter.get_node)

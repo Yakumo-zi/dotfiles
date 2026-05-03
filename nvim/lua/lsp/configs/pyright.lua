@@ -1,4 +1,5 @@
-local utils = require("utils")
+local env = require("env")
+
 local function set_python_path(command)
   local path = command.args
   local clients = vim.lsp.get_clients({
@@ -41,7 +42,7 @@ return {
   on_attach = function(client, bufnr)
     local root_dir = client.config.root_dir
     local default_venv_path = root_dir and (root_dir .. "/.venv/bin/python")
-    if default_venv_path and utils.path_exist(default_venv_path) then
+    if default_venv_path and env.path_exist(default_venv_path) then
       set_python_path({
         args = default_venv_path,
       })

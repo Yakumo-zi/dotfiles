@@ -26,6 +26,7 @@ local function set_default_keymaps(bufnr)
     "Remove workspace folder"
   )
   map(bufnr, "<leader>D", vim.lsp.buf.type_definition, "Go to type definition")
+  map(bufnr, "<leader>ca", vim.lsp.buf.code_action, "Code actions")
   map(bufnr, "<leader>rn", vim.lsp.buf.rename, "Rename symbol")
   map(
     bufnr,
