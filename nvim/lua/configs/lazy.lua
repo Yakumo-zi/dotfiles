@@ -1,6 +1,6 @@
 return {
   defaults = { lazy = true },
-  install = { colorscheme = { "nano-light", "nvchad" } },
+  install = { colorscheme = { "nvchad" } },
   rocks = { enabled = false },
   checker = { enabled = true, notify = false },
   change_detection = { enabled = true, notify = false },

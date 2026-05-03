@@ -31,7 +31,7 @@ return {
     event = "VimEnter",
     config = function()
       require("notify").setup({
-        background_colour = "#eff1f5",
+        background_colour = "#303446",
         fps = 60,
         render = "compact",
         stages = "fade_in_slide_out",
