@@ -1,9 +1,12 @@
+require("nvchad.options")
+
 local env = require("env")
 local o = vim.o
 
 o.laststatus = 3
 o.showmode = false
 o.showtabline = 2
+o.updatetime = 300
 
 if env.has_any(env.clipboard_commands) or vim.fn.has("wsl") == 1 then
   o.clipboard = "unnamedplus"

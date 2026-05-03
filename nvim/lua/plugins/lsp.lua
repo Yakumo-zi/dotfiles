@@ -3,13 +3,30 @@ local env = require("env")
 return {
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
+    config = function() require("configs.lspconfig") end,
+  },
+  {
+    "hrsh7th/nvim-cmp",
     dependencies = {
-      "saghen/blink.cmp",
-      "folke/lazydev.nvim",
-      "j-hui/fidget.nvim",
+      "hrsh7th/cmp-path",
     },
-    config = function() require("lsp").setup() end,
+    opts = function(_, opts)
+      opts = opts or {}
+      local sources = {}
+      for _, source in ipairs(opts.sources or {}) do
+        if source.name == "async_path" then source = { name = "path" } end
+        if source.name ~= "lazydev" then table.insert(sources, source) end
+      end
+
+      table.insert(sources, 1, { name = "lazydev", group_index = 0 })
+      opts.sources = sources
+      return opts
+    end,
+  },
+  {
+    "https://codeberg.org/FelipeLema/cmp-async-path.git",
+    name = "cmp-async-path",
+    enabled = false,
   },
   {
     "folke/lazydev.nvim",
@@ -23,7 +40,7 @@ return {
   {
     "j-hui/fidget.nvim",
     event = "LspAttach",
-    opts = function() return require("plugins.configs.fidget") end,
+    opts = function() return require("configs.fidget") end,
   },
   {
     "Wansmer/symbol-usage.nvim",

@@ -1,9 +1,5 @@
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
-    lazy = false,
-  },
-  {
     "folke/flash.nvim",
     event = "VeryLazy",
     opts = {},
