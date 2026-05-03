@@ -7,26 +7,47 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-path",
-    },
-    opts = function(_, opts)
-      opts = opts or {}
-      local sources = {}
-      for _, source in ipairs(opts.sources or {}) do
-        if source.name == "async_path" then source = { name = "path" } end
-        if source.name ~= "lazydev" then table.insert(sources, source) end
-      end
-
-      table.insert(sources, 1, { name = "lazydev", group_index = 0 })
-      opts.sources = sources
-      return opts
-    end,
+    enabled = false,
   },
   {
-    "https://codeberg.org/FelipeLema/cmp-async-path.git",
-    name = "cmp-async-path",
-    enabled = false,
+    "saghen/blink.cmp",
+    version = "1.*",
+    event = { "InsertEnter", "CmdLineEnter" },
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+      {
+        "L3MON4D3/LuaSnip",
+        dependencies = "rafamadriz/friendly-snippets",
+        opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+        config = function(_, opts)
+          require("luasnip").config.set_config(opts)
+          require("nvchad.configs.luasnip")
+        end,
+      },
+      {
+        "windwp/nvim-autopairs",
+        opts = {
+          fast_wrap = {},
+          disable_filetype = { "TelescopePrompt", "vim" },
+        },
+      },
+    },
+    opts_extend = { "sources.default" },
+    opts = function()
+      local opts = require("nvchad.blink.config")
+      opts.sources = vim.tbl_deep_extend("force", opts.sources or {}, {
+        default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+        providers = {
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            score_offset = 100,
+          },
+        },
+      })
+
+      return opts
+    end,
   },
   {
     "folke/lazydev.nvim",
